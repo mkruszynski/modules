@@ -9,6 +9,10 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
         ls ../
         echo "2 wstecz"
         ls ../../
+        echo "3 wstecz"
+        ls ../../../
+        echo "$ wstecz"
+        ls ../../../../
         echo "dom"
         ls $HOME
         sudo chmod +r ./bootstrap.properties
