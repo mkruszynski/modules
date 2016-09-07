@@ -3,8 +3,13 @@
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     if [ "$DB" = "mysql" ]; then
         mv ./testdata/mysql/bootstrap.properties .
+        echo "Tutej"
         ls
+        echo "1 wstecz"
+        ls ../
+        echo "2 wstecz"
         ls ../../
+        echo "dom"
         ls $HOME
         sudo chmod +r ./bootstrap.properties
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
