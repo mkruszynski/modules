@@ -1,0 +1,782 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] MOTECH Modules
+[INFO] Alerts Module
+[INFO] Appointments Module
+[INFO] CMS Lite Module
+[INFO] CommCare Module
+[INFO] Event Logging Module
+[INFO] Hindi Transliteration
+[INFO] Http Agent Module
+[INFO] mTraining Module
+[INFO] SMS Module
+[INFO] MOTECH Message Campaign
+[INFO] OpenMRS
+[INFO] Pill Reminder Module
+[INFO] Schedule Tracking Modules
+[INFO] MOTECH Batch
+[INFO] MOTECH Hub
+[INFO] IVR Module
+[INFO] DHIS2 module
+[INFO] Care Services Discovery
+[INFO] Metrics
+[INFO] ODK Module
+[INFO] IHE Interop Module
+[INFO] Atom Client
+[INFO] RapidPro Module
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building MOTECH Modules 0.30-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-pax-it/0.30-SNAPSHOT/maven-metadata.xml
+780/780 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-pax-it/0.30-SNAPSHOT/maven-metadata.xml (780 B at 2.6 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech/0.30-SNAPSHOT/maven-metadata.xml
+600/600 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech/0.30-SNAPSHOT/maven-metadata.xml (600 B at 5.6 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-pax-it-container/0.30-SNAPSHOT/maven-metadata.xml
+790/790 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-pax-it-container/0.30-SNAPSHOT/maven-metadata.xml (790 B at 7.3 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-osgi-platform/0.30-SNAPSHOT/maven-metadata.xml
+787/787 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-osgi-platform/0.30-SNAPSHOT/maven-metadata.xml (787 B at 7.3 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-testing-utils/0.30-SNAPSHOT/maven-metadata.xml
+787/787 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-testing-utils/0.30-SNAPSHOT/maven-metadata.xml (787 B at 7.3 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-commons-date/0.30-SNAPSHOT/maven-metadata.xml
+795/795 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-commons-date/0.30-SNAPSHOT/maven-metadata.xml (795 B at 6.9 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-commons-api/0.30-SNAPSHOT/maven-metadata.xml
+794/794 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-commons-api/0.30-SNAPSHOT/maven-metadata.xml (794 B at 7.0 KB/sec)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ modules ---
+[INFO] Deleting /home/user/repos/modules/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-dependency-convergence) @ modules ---
+[INFO] 
+[INFO] --- properties-maven-plugin:1.0-alpha-2:read-project-properties (default) @ modules ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:resolve (list-dependencies) @ modules ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy-dependencies (copy-osgi-dependencies) @ modules ---
+[INFO] org.apache.servicemix.bundles.spring-beans-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-core-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.io-1.0.2.RELEASE.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.core-1.0.2.RELEASE.jar already exists in destination.
+[INFO] org.eclipse.osgi.services-3.3.0.v20110513.jar already exists in destination.
+[INFO] log4j-1.2.17.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-context-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] jcl-over-slf4j-1.7.7.jar already exists in destination.
+[INFO] slf4j-api-1.7.7.jar already exists in destination.
+[INFO] org.osgi.compendium-5.0.0.jar already exists in destination.
+[INFO] slf4j-log4j12-1.7.7.jar already exists in destination.
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.5:check (default) > :pmd @ modules >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:pmd (pmd) @ modules ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.5:check (default) < :pmd @ modules <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:check (default) @ modules ---
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.5:cpd-check (default) > :cpd @ modules >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:cpd (cpd) @ modules ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.5:cpd-check (default) < :cpd @ modules <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:cpd-check (default) @ modules ---
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.10:check (default) @ modules ---
+[INFO] Starting audit...
+Audit done.
+
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:copy-resources (copy-test-config-files) @ modules ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- sql-maven-plugin:1.5:execute (drop-db) @ modules ---
+[INFO] Skipping sql execution for project with packaging type 'pom'
+[INFO] 
+[INFO] --- sql-maven-plugin:1.5:execute (create-db) @ modules ---
+[INFO] Skipping sql execution for project with packaging type 'pom'
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.17:integration-test (integration-test) @ modules ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (clean-test-config-files) @ modules ---
+[INFO] Deleting /home/user/.motech/config (includes = [bootstrap.properties, motech-settings.properties, datanucleus_data.properties, datanucleus_schema.properties, flyway_data.properties, flyway_schema.properties], excludes = [])
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-no-package-cycles) @ modules ---
+[INFO] Directory /home/user/repos/modules/target/classes could not be found.
+[INFO] Directory /home/user/repos/modules/target/test-classes could not be found.
+[INFO] No directories with classes to check for cycles found.
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.17:verify (verify) @ modules ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ modules ---
+[INFO] Installing /home/user/repos/modules/pom.xml to /home/user/.m2/repository/org/motechproject/modules/0.30-SNAPSHOT/modules-0.30-SNAPSHOT.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Alerts Module 0.30-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/apache/maven/plugins/maven-install-plugin/maven-metadata.xml
+Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/maven-metadata.xml
+820/820 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/apache/maven/plugins/maven-install-plugin/maven-metadata.xml (820 B at 6.7 KB/sec)
+623/623 B               Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-install-plugin/maven-metadata.xml (623 B at 0.9 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/apache/maven/plugins/maven-deploy-plugin/maven-metadata.xml
+Downloading: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/maven-metadata.xml
+709/709 B               Downloaded: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-deploy-plugin/maven-metadata.xml (709 B at 12.1 KB/sec)
+906/906 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/apache/maven/plugins/maven-deploy-plugin/maven-metadata.xml (906 B at 8.0 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-server-config/0.30-SNAPSHOT/maven-metadata.xml
+796/796 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-server-config/0.30-SNAPSHOT/maven-metadata.xml (796 B at 7.5 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-dataservices/0.30-SNAPSHOT/maven-metadata.xml
+795/795 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-dataservices/0.30-SNAPSHOT/maven-metadata.xml (795 B at 7.4 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-commons-sql/0.30-SNAPSHOT/maven-metadata.xml
+794/794 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-commons-sql/0.30-SNAPSHOT/maven-metadata.xml (794 B at 7.4 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-config-core/0.30-SNAPSHOT/maven-metadata.xml
+794/794 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-config-core/0.30-SNAPSHOT/maven-metadata.xml (794 B at 7.4 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-osgi-web-util/0.30-SNAPSHOT/maven-metadata.xml
+796/796 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-osgi-web-util/0.30-SNAPSHOT/maven-metadata.xml (796 B at 7.4 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-osgi-extender-fragment/0.30-SNAPSHOT/maven-metadata.xml
+805/805 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-osgi-extender-fragment/0.30-SNAPSHOT/maven-metadata.xml (805 B at 7.6 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-dataservices-migration/0.30-SNAPSHOT/maven-metadata.xml
+805/805 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-dataservices-migration/0.30-SNAPSHOT/maven-metadata.xml (805 B at 7.3 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-event/0.30-SNAPSHOT/maven-metadata.xml
+788/788 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-event/0.30-SNAPSHOT/maven-metadata.xml (788 B at 7.2 KB/sec)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ alerts ---
+[INFO] Deleting /home/user/repos/modules/alerts/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-dependency-convergence) @ alerts ---
+[INFO] 
+[INFO] --- properties-maven-plugin:1.0-alpha-2:read-project-properties (default) @ alerts ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:resolve (list-dependencies) @ alerts ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy-dependencies (copy-osgi-dependencies) @ alerts ---
+[INFO] paranamer-2.6-sources.jar already exists in destination.
+[INFO] kahadb-5.4.2.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-context-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.specs.saaj-api-1.3-2.2.0.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.paranamer-2.6_1.jar already exists in destination.
+[INFO] aopalliance-1.0.jar already exists in destination.
+[INFO] org.apache.felix.eventadmin-1.3.2.jar already exists in destination.
+[INFO] quartz-2.2.1.jar already exists in destination.
+[INFO] datanucleus-core-4.0.1.jar already exists in destination.
+[INFO] maven-scm-provider-svnexe-1.4.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.saaj-impl-1.3.25_1.jar already exists in destination.
+[INFO] motech-platform-dataservices-migration-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] javax.management.j2ee-api-1.1.1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-expression-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] datanucleus-rdbms-4.0.1.jar already exists in destination.
+[INFO] datanucleus-java8-4.0.5.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-aop-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] mimepull-1.9.jar already exists in destination.
+[INFO] asm-commons-5.0.3.jar already exists in destination.
+[INFO] commons-digester-2.1.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.core-1.0.2.RELEASE.jar already exists in destination.
+[INFO] motech-platform-commons-date-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-logging-1.1.1.jar already exists in destination.
+[INFO] commons-io-2.4.jar already exists in destination.
+[INFO] commons-beanutils-1.9.2.jar already exists in destination.
+[INFO] flyway-core-2.3.1.jar already exists in destination.
+[INFO] spring-security-web-3.2.8.RELEASE.jar already exists in destination.
+[INFO] motech-osgi-platform-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] time-api-0.6.3.jar already exists in destination.
+[INFO] com.springsource.javax.servlet-2.5.0.jar already exists in destination.
+[INFO] super-csv-2.2.0.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.jsch-0.1.51_1.jar already exists in destination.
+[INFO] org.apache.bval.bundle-0.5.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-web-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.c3p0-0.9.1.2_1.jar already exists in destination.
+[INFO] joda-time-2.9.1.jar already exists in destination.
+[INFO] regexp-1.3.jar already exists in destination.
+[INFO] spring-security-core-3.2.8.RELEASE.jar already exists in destination.
+[INFO] asm-5.0.3.jar already exists in destination.
+[INFO] bval-core-0.5.jar already exists in destination.
+[INFO] motech-platform-event-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] maven-scm-api-1.4.jar already exists in destination.
+[INFO] spring-orm-3.2.16.RELEASE.jar already exists in destination.
+[INFO] commons-lang-2.6.jar already exists in destination.
+[INFO] activation-1.1.jar already exists in destination.
+[INFO] commons-vfs2-2.0.jar already exists in destination.
+[INFO] com.springsource.org.apache.commons.httpclient-3.1.0.jar already exists in destination.
+[INFO] motech-platform-dataservices-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-codec-1.10.jar already exists in destination.
+[INFO] javassist-3.18.1-GA.jar already exists in destination.
+[INFO] motech-platform-config-core-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.velocity-1.6.4_4.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-core-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-context-support-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-security-config-3.2.8.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.specs.activation-api-1.1-2.4.0.jar already exists in destination.
+[INFO] jta-1.1.jar already exists in destination.
+[INFO] ow2-ejb-3.1-spec-1.0.13.jar already exists in destination.
+[INFO] stax-api-1.0-2.jar already exists in destination.
+[INFO] javax.xml.rpc-api-1.1.1.jar already exists in destination.
+[INFO] guava-18.0.jar already exists in destination.
+[INFO] org.motechproject.spring-orm-3.2.16.RELEASE_1-r033.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.io-1.0.2.RELEASE.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.howl-1.0.1-1_3.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-webmvc-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] motech-platform-commons-api-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] motech-platform-osgi-extender-fragment-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] jdo-api-3.0.1.jar already exists in destination.
+[INFO] oro-2.0.8.jar already exists in destination.
+[INFO] slf4j-api-1.7.7.jar already exists in destination.
+[INFO] org.osgi.compendium-5.0.0.jar already exists in destination.
+[INFO] com.springsource.javax.transaction-1.1.0.jar already exists in destination.
+[INFO] org.motechproject.reflections-0.9.9-r033.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-beans-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] postgresql-9.1-901.jdbc4.jar already exists in destination.
+[INFO] org.motechproject.org.codehaus.jackson-1.9.7-r033.jar already exists in destination.
+[INFO] com.springsource.javax.jms-1.1.0.jar already exists in destination.
+[INFO] datanucleus-api-jdo-4.0.1.jar already exists in destination.
+[INFO] annotations-2.0.1.jar already exists in destination.
+[INFO] mysql-connector-java-5.1.32.jar already exists in destination.
+[INFO] log4j-1.2.17.jar already exists in destination.
+[INFO] org.motechproject.com.google.code.gson-1.7.1-r033.jar already exists in destination.
+[INFO] maven-scm-provider-svn-commons-1.4.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.aopalliance-1.0_6.jar already exists in destination.
+[INFO] spring-integration-core-2.1.0.RELEASE.jar already exists in destination.
+[INFO] itextpdf-5.5.6.jar already exists in destination.
+[INFO] motech-platform-osgi-web-util-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] datanucleus-jodatime-4.0.6.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-tx-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.extender-1.0.2.RELEASE.jar already exists in destination.
+[INFO] org.motechproject.javax.time-0.6.3-r033.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.aspectj-1.8.5_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.hamcrest-1.3_1.jar already exists in destination.
+[INFO] commons-net-3.2.jar already exists in destination.
+[INFO] bval-jsr303-0.5.jar already exists in destination.
+[INFO] jcl-over-slf4j-1.7.7.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-jdbc-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.motechproject.org.apache.activemq-5.4.2-r033.jar already exists in destination.
+[INFO] motech-platform-commons-sql-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-lang3-3.1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-jms-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] paranamer-2.6.jar already exists in destination.
+[INFO] commons-configuration-1.10.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.dom4j-1.6.1_5.jar already exists in destination.
+[INFO] org.motechproject.org.postgresql-9.1-901.jdbc4-r033.jar already exists in destination.
+[INFO] stax-ex-1.7.4.jar already exists in destination.
+[INFO] motech-platform-server-config-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-beanutils-core-1.8.3.jar already exists in destination.
+[INFO] org.motechproject.com.googlecode.lambdaj-2.3.3-r033.jar already exists in destination.
+[INFO] objenesis-2.1.jar already exists in destination.
+[INFO] jackrabbit-webdav-2.9.1.jar already exists in destination.
+[INFO] commons-validator-1.4.1.jar already exists in destination.
+[INFO] asm-tree-5.0.3.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.cglib-2.2.2_1.jar already exists in destination.
+[INFO] spring-integration-jms-2.1.0.RELEASE.jar already exists in destination.
+[INFO] commons-collections-3.2.2.jar already exists in destination.
+[INFO] slf4j-log4j12-1.7.7.jar already exists in destination.
+[INFO] com.springsource.javax.validation-1.0.0.GA.jar already exists in destination.
+[INFO] org.eclipse.osgi.services-3.3.0.v20110513.jar already exists in destination.
+[INFO] reflections-0.9.9.jar already exists in destination.
+[INFO] commons-httpclient-3.1.jar already exists in destination.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ alerts ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ alerts ---
+[INFO] Compiling 18 source files to /home/user/repos/modules/alerts/target/classes
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.5:check (default) > :pmd @ alerts >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:pmd (pmd) @ alerts ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.5:check (default) < :pmd @ alerts <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:check (default) @ alerts ---
+[INFO] 
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.5:cpd-check (default) > :cpd @ alerts >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:cpd (cpd) @ alerts ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.5:cpd-check (default) < :cpd @ alerts <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:cpd-check (default) @ alerts ---
+[INFO] 
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.10:check (default) @ alerts ---
+[INFO] Starting audit...
+Audit done.
+
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ alerts ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ alerts ---
+[INFO] Compiling 11 source files to /home/user/repos/modules/alerts/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ alerts ---
+[INFO] Surefire report directory: /home/user/repos/modules/alerts/target/surefire-reports
+[INFO] Using configured provider org.apache.maven.surefire.junitcore.JUnitCoreProvider
+[INFO] parallel='none', perCoreThreadCount=true, threadCount=0, useUnlimitedThreads=false, threadCountSuites=0, threadCountClasses=0, threadCountMethods=0, parallelOptimized=true
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option UseSplitVerifier; support was removed in 8.0
+Running org.motechproject.alerts.contract.CriterionTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.444 sec - in org.motechproject.alerts.contract.CriterionTest
+Running org.motechproject.alerts.service.AlertServiceImplTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.004 sec - in org.motechproject.alerts.service.AlertServiceImplTest
+Running org.motechproject.alerts.service.AlertFilterTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 sec - in org.motechproject.alerts.service.AlertFilterTest
+Running org.motechproject.alerts.service.AlertEventHandlerTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 sec - in org.motechproject.alerts.service.AlertEventHandlerTest
+
+Results :
+
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-bundle-plugin:2.5.3:bundle (default-bundle) @ alerts ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:copy-resources (copy-bundles) @ alerts ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:copy-resources (copy-test-config-files) @ alerts ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- sql-maven-plugin:1.5:execute (drop-db) @ alerts ---
+[INFO] Executing commands
+[INFO] 3 of 3 SQL statements executed successfully
+[INFO] 
+[INFO] --- sql-maven-plugin:1.5:execute (create-db) @ alerts ---
+[INFO] Executing commands
+[INFO] 3 of 3 SQL statements executed successfully
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.17:integration-test (integration-test) @ alerts ---
+[WARNING] The parameter forkMode is deprecated since version 2.14. Use forkCount and reuseForks instead.
+[INFO] Failsafe report directory: /home/user/repos/modules/alerts/target/failsafe-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.motechproject.alerts.it.AlertsIntegrationTests
+2016-09-08 10:59:06,764 WARN  [org.motechproject.server.osgi.PlatformActivator] Felix http bundle unavailable, http endpoints will not be active
+[INFO] Started jetty 6.1.x at port(s) HTTP:8181
+2016-09-08 10:59:10,096 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] datanucleus_data.properties file in the location /home/user/.motech/config/ is not READABLE.
+2016-09-08 10:59:10,096 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] datanucleus_data.properties file in the location /etc/motech/ is not READABLE.
+2016-09-08 10:59:10,097 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] datanucleus_data.properties file in the location \/home/user/.motech/config/ is not READABLE.
+2016-09-08 10:59:10,097 WARN  [org.motechproject.config.core.datanucleus.impl.DbConfigManagerImpl] datanucleus_data.properties file is not READABLE from any of the default locations. Searched directories: /home/user/.motech/config/ /etc/motech/ \/home/user/.motech/config/ .
+[INFO] Initializing Spring FrameworkServlet 'servlet_1'
+2016-09-08 10:59:10,334 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] datanucleus_schema.properties file in the location /home/user/.motech/config/ is not READABLE.
+2016-09-08 10:59:10,337 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] datanucleus_schema.properties file in the location /etc/motech/ is not READABLE.
+2016-09-08 10:59:10,340 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] datanucleus_schema.properties file in the location \/home/user/.motech/config/ is not READABLE.
+2016-09-08 10:59:10,346 WARN  [org.motechproject.config.core.datanucleus.impl.DbConfigManagerImpl] datanucleus_schema.properties file is not READABLE from any of the default locations. Searched directories: /home/user/.motech/config/ /etc/motech/ \/home/user/.motech/config/ .
+[INFO] Initialized servlet for org.motechproject.motech-platform-osgi-web-util [101]
+2016-09-08 10:59:10,610 WARN  [org.motechproject.osgi.web.tracker.UIServiceTrackers] Bean moduleRegistrationData not found in org.motechproject.motech-platform-osgi-web-util
+2016-09-08 10:59:11,352 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] flyway_schema.properties file in the location /home/user/.motech/config/ is not READABLE.
+2016-09-08 10:59:11,352 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] flyway_schema.properties file in the location /etc/motech/ is not READABLE.
+2016-09-08 10:59:11,353 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] flyway_schema.properties file in the location \/home/user/.motech/config/ is not READABLE.
+2016-09-08 10:59:11,353 WARN  [org.motechproject.config.core.datanucleus.impl.DbConfigManagerImpl] flyway_schema.properties file is not READABLE from any of the default locations. Searched directories: /home/user/.motech/config/ /etc/motech/ \/home/user/.motech/config/ .
+2016-09-08 11:00:23,342 WARN  [org.motechproject.mds.annotations.internal.UIDisplayableProcessor] The annotation has the position value which is greater than total number of fields.
+2016-09-08 11:00:37,848 WARN  [org.motechproject.mds.osgi.EntitiesBundleMonitor] No entities bundle to stop
+2016-09-08 11:00:45,110 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] flyway_data.properties file in the location /home/user/.motech/config/ is not READABLE.
+2016-09-08 11:00:45,110 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] flyway_data.properties file in the location /etc/motech/ is not READABLE.
+2016-09-08 11:00:45,111 WARN  [org.motechproject.config.core.utils.ConfigPropertiesUtils] flyway_data.properties file in the location \/home/user/.motech/config/ is not READABLE.
+2016-09-08 11:00:45,111 WARN  [org.motechproject.config.core.datanucleus.impl.DbConfigManagerImpl] flyway_data.properties file is not READABLE from any of the default locations. Searched directories: /home/user/.motech/config/ /etc/motech/ \/home/user/.motech/config/ .
+[INFO] Initializing Spring FrameworkServlet 'servlet_3'
+[INFO] Initialized servlet for org.motechproject.motech-platform-dataservices [60]
+2016-09-08 11:01:21,253 WARN  [org.motechproject.osgi.web.tracker.UIServiceTrackers] Bean moduleRegistrationData not found in org.motechproject.motech-platform-dataservices
+[INFO] Initializing Spring FrameworkServlet 'servlet_4'
+[INFO] Initialized servlet for org.motechproject.alerts [13]
+2016-09-08 11:01:23,634 WARN  [org.motechproject.osgi.web.tracker.UIServiceTrackers] Bean moduleRegistrationData not found in org.motechproject.alerts
+[INFO] Destroying Spring FrameworkServlet 'servlet_4'
+[INFO] Destroying Spring FrameworkServlet 'servlet_3'
+[INFO] Destroying Spring FrameworkServlet 'servlet_1'
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 152.554 sec - in org.motechproject.alerts.it.AlertsIntegrationTests
+
+Results :
+
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-no-package-cycles) @ alerts ---
+[INFO] Adding directory /home/user/repos/modules/alerts/target/classes for package cycles search.
+[INFO] Adding directory /home/user/repos/modules/alerts/target/test-classes for package cycles search.
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.17:verify (verify) @ alerts ---
+[INFO] Failsafe report directory: /home/user/repos/modules/alerts/target/failsafe-reports
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ alerts ---
+[INFO] Installing /home/user/repos/modules/alerts/target/alerts-0.30-SNAPSHOT.jar to /home/user/.m2/repository/org/motechproject/alerts/0.30-SNAPSHOT/alerts-0.30-SNAPSHOT.jar
+[INFO] Installing /home/user/repos/modules/alerts/pom.xml to /home/user/.m2/repository/org/motechproject/alerts/0.30-SNAPSHOT/alerts-0.30-SNAPSHOT.pom
+[INFO] 
+[INFO] --- maven-bundle-plugin:2.5.3:install (default-install) @ alerts ---
+[INFO] Installing org/motechproject/alerts/0.30-SNAPSHOT/alerts-0.30-SNAPSHOT.jar
+[INFO] Writing OBR metadata
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Appointments Module 0.30-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-web-security/0.30-SNAPSHOT/maven-metadata.xml
+795/795 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-platform-web-security/0.30-SNAPSHOT/maven-metadata.xml (795 B at 3.6 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-scheduler/0.30-SNAPSHOT/maven-metadata.xml
+783/783 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-scheduler/0.30-SNAPSHOT/maven-metadata.xml (783 B at 7.4 KB/sec)
+Downloading: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-scheduler-migration/0.30-SNAPSHOT/maven-metadata.xml
+793/793 B               Downloaded: http://nexus.motechproject.org/content/repositories/public/org/motechproject/motech-scheduler-migration/0.30-SNAPSHOT/maven-metadata.xml (793 B at 7.4 KB/sec)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ appointments ---
+[INFO] Deleting /home/user/repos/modules/appointments/target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-dependency-convergence) @ appointments ---
+[INFO] 
+[INFO] --- properties-maven-plugin:1.0-alpha-2:read-project-properties (default) @ appointments ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:resolve (list-dependencies) @ appointments ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy-dependencies (copy-osgi-dependencies) @ appointments ---
+[INFO] paranamer-2.6-sources.jar already exists in destination.
+[INFO] jcip-annotations-1.0.jar already exists in destination.
+[INFO] kahadb-5.4.2.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-context-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.paranamer-2.6_1.jar already exists in destination.
+[INFO] org.apache.servicemix.specs.saaj-api-1.3-2.2.0.jar already exists in destination.
+[INFO] aopalliance-1.0.jar already exists in destination.
+[INFO] quartz-2.2.1.jar already exists in destination.
+[INFO] datanucleus-core-4.0.1.jar already exists in destination.
+[INFO] org.apache.felix.eventadmin-1.3.2.jar already exists in destination.
+[INFO] maven-scm-provider-svnexe-1.4.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.saaj-impl-1.3.25_1.jar already exists in destination.
+[INFO] motech-platform-dataservices-migration-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] javax.management.j2ee-api-1.1.1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-expression-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] datanucleus-rdbms-4.0.1.jar already exists in destination.
+[INFO] datanucleus-java8-4.0.5.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-aop-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] mimepull-1.9.jar already exists in destination.
+[INFO] xml-apis-1.4.01.jar already exists in destination.
+[INFO] asm-commons-5.0.3.jar already exists in destination.
+[INFO] commons-digester-2.1.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.core-1.0.2.RELEASE.jar already exists in destination.
+[INFO] motech-platform-commons-date-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-logging-1.1.1.jar already exists in destination.
+[INFO] commons-io-2.4.jar already exists in destination.
+[INFO] commons-beanutils-1.9.2.jar already exists in destination.
+[INFO] commons-dbcp-1.4.jar already exists in destination.
+[INFO] flyway-core-2.3.1.jar already exists in destination.
+[INFO] nekohtml-1.9.20.jar already exists in destination.
+[INFO] spring-security-web-3.2.8.RELEASE.jar already exists in destination.
+[INFO] motech-osgi-platform-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] time-api-0.6.3.jar already exists in destination.
+[INFO] com.springsource.javax.servlet-2.5.0.jar already exists in destination.
+[INFO] super-csv-2.2.0.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.jsch-0.1.51_1.jar already exists in destination.
+[INFO] org.apache.bval.bundle-0.5.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-web-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] motech-platform-web-security-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] motech-scheduler-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.c3p0-0.9.1.2_1.jar already exists in destination.
+[INFO] guice-2.0.jar already exists in destination.
+[INFO] joda-time-2.9.1.jar already exists in destination.
+[INFO] regexp-1.3.jar already exists in destination.
+[INFO] com.springsource.com.google.inject-2.0.0.jar already exists in destination.
+[INFO] spring-security-core-3.2.8.RELEASE.jar already exists in destination.
+[INFO] asm-5.0.3.jar already exists in destination.
+[INFO] bval-core-0.5.jar already exists in destination.
+[INFO] motech-platform-event-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] maven-scm-api-1.4.jar already exists in destination.
+[INFO] spring-orm-3.2.16.RELEASE.jar already exists in destination.
+[INFO] commons-lang-2.6.jar already exists in destination.
+[INFO] activation-1.1.jar already exists in destination.
+[INFO] commons-vfs2-2.0.jar already exists in destination.
+[INFO] com.springsource.org.apache.commons.httpclient-3.1.0.jar already exists in destination.
+[INFO] motech-platform-dataservices-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-codec-1.10.jar already exists in destination.
+[INFO] org.apache.felix.http.api-2.2.0.jar already exists in destination.
+[INFO] javassist-3.18.1-GA.jar already exists in destination.
+[INFO] openid4java-nodeps-0.9.6.jar already exists in destination.
+[INFO] motech-platform-config-core-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.velocity-1.6.4_4.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-core-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-context-support-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.xmlresolver-1.2_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-security-config-3.2.8.RELEASE_1.jar already exists in destination.
+[INFO] jta-1.1.jar already exists in destination.
+[INFO] org.apache.servicemix.specs.activation-api-1.1-2.4.0.jar already exists in destination.
+[INFO] ow2-ejb-3.1-spec-1.0.13.jar already exists in destination.
+[INFO] stax-api-1.0-2.jar already exists in destination.
+[INFO] javax.xml.rpc-api-1.1.1.jar already exists in destination.
+[INFO] com.springsource.org.openid4java-0.9.5.jar already exists in destination.
+[INFO] guava-18.0.jar already exists in destination.
+[INFO] org.motechproject.spring-orm-3.2.16.RELEASE_1-r033.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.io-1.0.2.RELEASE.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.howl-1.0.1-1_3.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-webmvc-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] motech-platform-commons-api-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] motech-platform-osgi-extender-fragment-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] jdo-api-3.0.1.jar already exists in destination.
+[INFO] oro-2.0.8.jar already exists in destination.
+[INFO] slf4j-api-1.7.7.jar already exists in destination.
+[INFO] xercesImpl-2.10.0.jar already exists in destination.
+[INFO] org.osgi.compendium-5.0.0.jar already exists in destination.
+[INFO] com.springsource.javax.transaction-1.1.0.jar already exists in destination.
+[INFO] org.motechproject.reflections-0.9.9-r033.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-beans-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] postgresql-9.1-901.jdbc4.jar already exists in destination.
+[INFO] org.motechproject.org.codehaus.jackson-1.9.7-r033.jar already exists in destination.
+[INFO] com.springsource.javax.jms-1.1.0.jar already exists in destination.
+[INFO] datanucleus-api-jdo-4.0.1.jar already exists in destination.
+[INFO] annotations-2.0.1.jar already exists in destination.
+[INFO] mysql-connector-java-5.1.32.jar already exists in destination.
+[INFO] log4j-1.2.17.jar already exists in destination.
+[INFO] org.motechproject.com.google.code.gson-1.7.1-r033.jar already exists in destination.
+[INFO] maven-scm-provider-svn-commons-1.4.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.aopalliance-1.0_6.jar already exists in destination.
+[INFO] spring-integration-core-2.1.0.RELEASE.jar already exists in destination.
+[INFO] itextpdf-5.5.6.jar already exists in destination.
+[INFO] com.springsource.org.cyberneko.html-1.9.13.jar already exists in destination.
+[INFO] motech-platform-osgi-web-util-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] datanucleus-jodatime-4.0.6.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-tx-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.motechproject.javax.time-0.6.3-r033.jar already exists in destination.
+[INFO] org.eclipse.gemini.blueprint.extender-1.0.2.RELEASE.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.aspectj-1.8.5_1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.hamcrest-1.3_1.jar already exists in destination.
+[INFO] bval-jsr303-0.5.jar already exists in destination.
+[INFO] commons-net-3.2.jar already exists in destination.
+[INFO] jcl-over-slf4j-1.7.7.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-jdbc-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] org.motechproject.org.apache.activemq-5.4.2-r033.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.xerces-2.10.0_1.jar already exists in destination.
+[INFO] motech-platform-commons-sql-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-lang3-3.1.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.spring-jms-3.2.16.RELEASE_1.jar already exists in destination.
+[INFO] motech-scheduler-migration-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] paranamer-2.6.jar already exists in destination.
+[INFO] commons-configuration-1.10.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.dom4j-1.6.1_5.jar already exists in destination.
+[INFO] org.motechproject.org.postgresql-9.1-901.jdbc4-r033.jar already exists in destination.
+[INFO] stax-ex-1.7.4.jar already exists in destination.
+[INFO] commons-pool-1.6.jar already exists in destination.
+[INFO] motech-platform-server-config-0.30-SNAPSHOT.jar already exists in destination.
+[INFO] commons-beanutils-core-1.8.3.jar already exists in destination.
+[INFO] org.motechproject.com.googlecode.lambdaj-2.3.3-r033.jar already exists in destination.
+[INFO] objenesis-2.1.jar already exists in destination.
+[INFO] jackrabbit-webdav-2.9.1.jar already exists in destination.
+[INFO] commons-validator-1.4.1.jar already exists in destination.
+[INFO] asm-tree-5.0.3.jar already exists in destination.
+[INFO] org.apache.servicemix.bundles.cglib-2.2.2_1.jar already exists in destination.
+[INFO] spring-integration-jms-2.1.0.RELEASE.jar already exists in destination.
+[INFO] commons-collections-3.2.2.jar already exists in destination.
+[INFO] slf4j-log4j12-1.7.7.jar already exists in destination.
+[INFO] com.springsource.javax.validation-1.0.0.GA.jar already exists in destination.
+[INFO] motech-c3p0-fragment-bundle-0.16-r033.jar already exists in destination.
+[INFO] org.eclipse.osgi.services-3.3.0.v20110513.jar already exists in destination.
+[INFO] reflections-0.9.9.jar already exists in destination.
+[INFO] spring-security-openid-3.2.8.RELEASE.jar already exists in destination.
+[INFO] commons-httpclient-3.1.jar already exists in destination.
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ appointments ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ appointments ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 10 source files to /home/user/repos/modules/appointments/target/classes
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.5:check (default) > :pmd @ appointments >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:pmd (pmd) @ appointments ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.5:check (default) < :pmd @ appointments <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:check (default) @ appointments ---
+[INFO] 
+[INFO] 
+[INFO] >>> maven-pmd-plugin:3.5:cpd-check (default) > :cpd @ appointments >>>
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:cpd (cpd) @ appointments ---
+[INFO] 
+[INFO] <<< maven-pmd-plugin:3.5:cpd-check (default) < :cpd @ appointments <<<
+[INFO] 
+[INFO] --- maven-pmd-plugin:3.5:cpd-check (default) @ appointments ---
+[INFO] 
+[INFO] 
+[INFO] --- maven-checkstyle-plugin:2.10:check (default) @ appointments ---
+[INFO] Starting audit...
+Audit done.
+
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ appointments ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ appointments ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home/user/repos/modules/appointments/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.17:test (default-test) @ appointments ---
+[INFO] 
+[INFO] --- maven-bundle-plugin:2.5.3:bundle (default-bundle) @ appointments ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:copy-resources (copy-bundles) @ appointments ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:copy-resources (copy-test-config-files) @ appointments ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- sql-maven-plugin:1.5:execute (drop-db) @ appointments ---
+[INFO] Executing commands
+[INFO] 3 of 3 SQL statements executed successfully
+[INFO] 
+[INFO] --- sql-maven-plugin:1.5:execute (create-db) @ appointments ---
+[INFO] Executing commands
+[INFO] 3 of 3 SQL statements executed successfully
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.17:integration-test (integration-test) @ appointments ---
+[INFO] Failsafe report directory: /home/user/repos/modules/appointments/target/failsafe-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running org.motechproject.appointments.service.it.AppointmentsIntegrationTests
+[INFO] Started jetty 6.1.x at port(s) HTTP:8181
+[INFO] Initializing Spring FrameworkServlet 'servlet_1'
+[INFO] Initialized servlet for org.motechproject.motech-platform-osgi-web-util [65]
+2016-09-08 11:05:01,652 EclipseGeminiBlueprintExtenderThread-12 DEBUG [org.motechproject.appointments.domain.mdsserviceimpl.AppointmentChangeRecordServiceImpl] Initializing org.motechproject.appointments.domain.mdsserviceimpl.AppointmentChangeRecordServiceImpl
+2016-09-08 11:05:01,656 EclipseGeminiBlueprintExtenderThread-12 DEBUG [org.motechproject.appointments.domain.mdsserviceimpl.AppointmentChangeRecordServiceImpl] org.motechproject.appointments.domain.mdsserviceimpl.AppointmentChangeRecordServiceImpl ready
+2016-09-08 11:05:01,795 EclipseGeminiBlueprintExtenderThread-12 DEBUG [org.motechproject.appointments.domain.mdsserviceimpl.AppointmentServiceImpl] Initializing org.motechproject.appointments.domain.mdsserviceimpl.AppointmentServiceImpl
+2016-09-08 11:05:01,799 EclipseGeminiBlueprintExtenderThread-12 DEBUG [org.motechproject.appointments.domain.mdsserviceimpl.AppointmentServiceImpl] org.motechproject.appointments.domain.mdsserviceimpl.AppointmentServiceImpl ready
+[INFO] Initializing Spring FrameworkServlet 'servlet_3'
+[INFO] Initializing Spring FrameworkServlet 'servlet_4'
+[INFO] Initialized servlet for org.motechproject.motech-platform-dataservices [46]
+[INFO] Initializing Spring FrameworkServlet 'servlet_7'
+[INFO] Initialized servlet for org.motechproject.appointments [13]
+[INFO] Initializing Spring FrameworkServlet 'servlet_9'
+2016-09-08 11:05:51,024 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] toggleReminders
+2016-09-08 11:05:51,452 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] deleteAppointment
+2016-09-08 11:05:51,722 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] deleteAppointmentException
+2016-09-08 11:05:51,729 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] addAppointment
+2016-09-08 11:05:51,853 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] addAppointmentDuplicate
+2016-09-08 11:05:51,991 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] addMultiple
+2016-09-08 11:05:52,177 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] findAppointmentsByExternalId
+2016-09-08 11:05:52,406 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] testAppointmentService
+2016-09-08 11:05:52,410 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] findAppointmentsByExternalIdAndStatus
+2016-09-08 11:05:52,567 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] updateAppointment
+2016-09-08 11:05:53,035 main INFO  [org.motechproject.appointments.service.it.AppointmentServiceBundleIT] updateAppointmentException
+[INFO] Initialized servlet for org.motechproject.motech-scheduler [104]
+[INFO] Destroying Spring FrameworkServlet 'servlet_7'
+ERROR: Bundle org.motechproject.motech-platform-osgi-web-util [65] EventDispatcher: Error during dispatch. (java.lang.IllegalStateException: BeanFactory not initialized or already closed - call 'refresh' before accessing beans via the ApplicationContext)
+ERROR: Bundle org.motechproject.motech-platform-web-security [103] EventDispatcher: Error during dispatch. (java.lang.IllegalStateException: BeanFactory not initialized or already closed - call 'refresh' before accessing beans via the ApplicationContext)
+[INFO] Destroying Spring FrameworkServlet 'servlet_4'
+ERROR: Bundle org.motechproject.motech-platform-event [41] EventDispatcher: Error during dispatch. (java.lang.IllegalStateException: BeanFactory not initialized or already closed - call 'refresh' before accessing beans via the ApplicationContext)
+[INFO] Destroying Spring FrameworkServlet 'servlet_1'
+[INFO] Destroying Spring FrameworkServlet 'servlet_9'
+[INFO] Destroying Spring FrameworkServlet 'servlet_3'
+Tests run: 12, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 242.961 sec <<< FAILURE! - in org.motechproject.appointments.service.it.AppointmentsIntegrationTests
+getAppointment(org.motechproject.appointments.service.it.AppointmentServiceBundleIT)  Time elapsed: 225.152 sec  <<< ERROR!
+org.ops4j.pax.exam.TestContainerException: Framework not ready after 225000 ms
+	at org.motechproject.testing.osgi.container.MotechNativeTestContainer.waitForTestedBundle(MotechNativeTestContainer.java:134)
+	at org.motechproject.testing.osgi.container.MotechNativeTestContainer.call(MotechNativeTestContainer.java:103)
+	at org.ops4j.pax.exam.spi.reactors.SingletonStagedReactor.invoke(SingletonStagedReactor.java:114)
+	at org.ops4j.pax.exam.spi.reactors.PerSuiteStagedReactor.invoke(PerSuiteStagedReactor.java:47)
+	at org.ops4j.pax.exam.junit.impl.ProbeRunner$2.evaluate(ProbeRunner.java:264)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:271)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:70)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.ops4j.pax.exam.junit.impl.ProbeRunner.run(ProbeRunner.java:98)
+	at org.ops4j.pax.exam.junit.PaxExam.run(PaxExam.java:93)
+	at org.junit.runners.Suite.runChild(Suite.java:127)
+	at org.junit.runners.Suite.runChild(Suite.java:26)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:264)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:153)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:200)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:153)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:103)
+
+
+Results :
+
+Tests in error: 
+  AppointmentServiceBundleIT.getAppointment » TestContainer Framework not ready ...
+
+Tests run: 12, Failures: 0, Errors: 1, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.4.1:enforce (enforce-no-package-cycles) @ appointments ---
+[INFO] Adding directory /home/user/repos/modules/appointments/target/classes for package cycles search.
+[INFO] Adding directory /home/user/repos/modules/appointments/target/test-classes for package cycles search.
+[INFO] 
+[INFO] --- maven-failsafe-plugin:2.17:verify (verify) @ appointments ---
+[INFO] Failsafe report directory: /home/user/repos/modules/appointments/target/failsafe-reports
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] MOTECH Modules ..................................... SUCCESS [  6.720 s]
+[INFO] Alerts Module ...................................... SUCCESS [03:01 min]
+[INFO] Appointments Module ................................ FAILURE [04:20 min]
+[INFO] CMS Lite Module .................................... SKIPPED
+[INFO] CommCare Module .................................... SKIPPED
+[INFO] Event Logging Module ............................... SKIPPED
+[INFO] Hindi Transliteration .............................. SKIPPED
+[INFO] Http Agent Module .................................. SKIPPED
+[INFO] mTraining Module ................................... SKIPPED
+[INFO] SMS Module ......................................... SKIPPED
+[INFO] MOTECH Message Campaign ............................ SKIPPED
+[INFO] OpenMRS ............................................ SKIPPED
+[INFO] Pill Reminder Module ............................... SKIPPED
+[INFO] Schedule Tracking Modules .......................... SKIPPED
+[INFO] MOTECH Batch ....................................... SKIPPED
+[INFO] MOTECH Hub ......................................... SKIPPED
+[INFO] IVR Module ......................................... SKIPPED
+[INFO] DHIS2 module ....................................... SKIPPED
+[INFO] Care Services Discovery ............................ SKIPPED
+[INFO] Metrics ............................................ SKIPPED
+[INFO] ODK Module ......................................... SKIPPED
+[INFO] IHE Interop Module ................................. SKIPPED
+[INFO] Atom Client ........................................ SKIPPED
+[INFO] RapidPro Module .................................... SKIPPED
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 07:31 min
+[INFO] Finished at: 2016-09-08T11:05:56+02:00
+[INFO] Final Memory: 99M/935M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-failsafe-plugin:2.17:verify (verify) on project appointments: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /home/user/repos/modules/appointments/target/failsafe-reports for the individual test results.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :appointments
