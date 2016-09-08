@@ -1091,6 +1091,7 @@
                                                 <include>datanucleus_schema.properties</include>
                                                 <include>flyway_data.properties</include>
                                                 <include>flyway_schema.properties</include>
+                                                <include>config-locations.properties</include>
                                             </includes>
                                         </resource>
                                         <resource>
