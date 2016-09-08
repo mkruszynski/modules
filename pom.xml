@@ -1075,7 +1075,6 @@
                         <executions>
                             <execution>
                                 <id>copy-test-config-files</id>
-                                <phase>pre-integration-test</phase>
                                 <goals>
                                     <goal>copy-resources</goal>
                                 </goals>
