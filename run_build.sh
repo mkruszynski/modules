@@ -4,6 +4,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     if [ "$DB" = "mysql" ]; then
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
         mvn clean compile
+        cp ./testdata/mysql/bootstrap.properties ~/.motech/config/
         chmod -R a+x ~/.motech/
         mvn install -PIT -U
     elif [ "$DB" = "psql" ]; then
