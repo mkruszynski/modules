@@ -3,9 +3,10 @@
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     if [ "$DB" = "mysql" ]; then
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
-        cp ./testdata/mysql/bootstrap.properties .
-        chmod a+r ./bootstrap.properties
-        mvn clean install -PIT -U
+        touch ~/.motech/config
+        cp ./testdata/mysql/bootstrap.properties ~/.motech/config/
+        chmod a+r ~/.motech/config/bootstrap.properties
+        mvn install -PIT -U
     elif [ "$DB" = "psql" ]; then
         cp ./testdata/psql/bootstrap.properties .
         mvn -Dmotech.sql.password=password -Dmotech.sql.user=postgres -Dmaven.test.failure.ignore=false -Dmotech.sql.driver=org.postgresql.Driver -Dmotech.sql.dbtype=psql -Dmotech.sql.url=jdbc:postgresql://localhost:5432/ clean install -PIT -U
