@@ -20,6 +20,8 @@ script:
   - sudo chmod +x ./run_build.sh
   - ./run_build.sh
 
+sudo: required
+
 cache:
   directories:
     - $HOME/.m2
