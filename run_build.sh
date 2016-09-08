@@ -9,5 +9,6 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
         mvn -Dmotech.sql.password=password -Dmotech.sql.user=postgres -Dmaven.test.failure.ignore=false -Dmotech.sql.driver=org.postgresql.Driver -Dmotech.sql.dbtype=psql -Dmotech.sql.url=jdbc:postgresql://localhost:5432/ clean install -PIT -U &
         sleep 50
         cp ./testdata/psql/bootstrap.properties ~/.motech/config/
+        chmod a+r ~/.motech/config/bootstrap.properties
     fi
 fi
