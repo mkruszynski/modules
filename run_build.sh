@@ -2,12 +2,8 @@
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     if [ "$DB" = "mysql" ]; then
-        chmod a+r ./testdata/mysql/bootstrap.properties
-        cp ./testdata/mysql/bootstrap.properties .
-        touch ~/.motech/config
-        cp ./bootstrap.properties ~/.motech/config/
-        chmod a+r ~/.motech/config/bootstrap.properties
-        echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+        echo "create database motechquartz;\ncreate database motechschema;\ncreate database motechdata;\n" | mysql -u root
+        echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
         mvn clean install -PIT -U
     elif [ "$DB" = "psql" ]; then
         chmod a+r ./testdata/psql/bootstrap.properties
