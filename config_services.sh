@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-sudo apt-get update -qq
+#sudo apt-get update -qq
 
 #Installation and configuration of ActiveMQ
 #sudo apt-get install -y activemq -qq

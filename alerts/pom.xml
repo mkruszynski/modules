@@ -122,7 +122,8 @@
                                     </includes>
                                     <summaryFile>target/failsafe-reports/failsafe-summary-it.xml
                                     </summaryFile>
-                                    <forkMode>always</forkMode>
+                                    <forkCount>1</forkCount>
+                                    <reuseForks>false</reuseForks>
                                     <systemPropertiesFile>${modules.root.dir}/maven.properties
                                     </systemPropertiesFile>
                                 </configuration>
