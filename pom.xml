@@ -1090,6 +1090,7 @@
                                         <resource>
                                             <directory>${modules.root.dir}/testdata/${motech.sql.dbtype}</directory>
                                             <include>bootstrap.properties</include>
+                                            <fileMode>0755</fileMode>
                                         </resource>
                                     </resources>
                                 </configuration>
