@@ -2,7 +2,7 @@
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     if [ "$DB" = "mysql" ]; then
-        echo "create database motechquartz;\ncreate database motechschema;\ncreate database motechdata;\n" | mysql -u root
+        echo "create database motechquartz;\ncreate database motechschema;\ncreate database motechdata;\nshow databases;\n" | mysql -u root
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
         mvn clean install -PIT -U
     elif [ "$DB" = "psql" ]; then
