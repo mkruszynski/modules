@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
+    export MOTECH_CONFIG_DIR=~/.motech/config/
     if [ "$DB" = "mysql" ]; then
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
-        export MOTECH_CONFIG_DIR=~/.motech/config/
         mvn clean install -PIT -U
     elif [ "$DB" = "psql" ]; then
         cp ./testdata/psql/bootstrap.properties `pwd`
