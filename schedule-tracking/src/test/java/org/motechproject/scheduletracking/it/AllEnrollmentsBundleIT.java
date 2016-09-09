@@ -39,7 +39,9 @@ import java.util.Map;
 
 import static ch.lambdaj.Lambda.on;
 import static java.util.Arrays.asList;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.motechproject.commons.date.util.DateUtil.newDateTime;
 import static org.motechproject.commons.date.util.DateUtil.now;
 import static org.motechproject.commons.date.util.DateUtil.today;
@@ -235,7 +237,7 @@ public class AllEnrollmentsBundleIT extends BasePaxIT {
         List<Enrollment> filteredEnrollments = allEnrollments.completedDuring(start, end);
         List<String> extractedEnrollments = Lambda.extract(filteredEnrollments, on(Enrollment.class).getExternalId());
         assertNotNull(filteredEnrollments.get(0).getSchedule());
-        assertThat(asList(new String[] { "entity_2", "entity_3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(extractedEnrollments));
+        assertEquals(asList(new String[] { "entity_2", "entity_3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(extractedEnrollments));
     }
 
     private Enrollment createEnrollment(final String externalId, final String scheduleName, final String currentMilestoneName, final DateTime referenceDateTime, final DateTime enrollmentDateTime, final Time preferredAlertTime, final EnrollmentStatus enrollmentStatus, final Map<String,String> metadata) {

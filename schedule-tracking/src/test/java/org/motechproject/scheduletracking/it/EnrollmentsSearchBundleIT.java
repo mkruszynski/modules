@@ -44,9 +44,7 @@ import static ch.lambdaj.Lambda.on;
 import static java.util.Arrays.asList;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
-import static org.motechproject.commons.date.util.DateUtil.newDate;
-import static org.motechproject.commons.date.util.DateUtil.newDateTime;
-import static org.motechproject.commons.date.util.DateUtil.now;
+import static org.motechproject.commons.date.util.DateUtil.*;
 import static org.motechproject.scheduletracking.utility.DateTimeUtil.daysAgo;
 import static org.motechproject.scheduletracking.utility.DateTimeUtil.weeksAgo;
 import static org.motechproject.scheduletracking.utility.DateTimeUtil.yearsAgo;
@@ -177,7 +175,6 @@ public class EnrollmentsSearchBundleIT extends BasePaxIT {
         createEnrollment("entity5", "Delivery", "milestone1", newDateTime(2010, 1, 1, 0, 0, 0), newDateTime(2010, 1, 1, 0, 0, 0), new Time(0, 0), EnrollmentStatus.ACTIVE, metadata);
 
         List<String> extractedEnrollments = extract(allEnrollments.findByMetadataProperty("foo", "bar"), on(Enrollment.class).getExternalId());
-        assertNull(extractedEnrollments);
         Assert.assertThat(asList(new String[]{ "entity1", "entity3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(extractedEnrollments));
         assertEquals(asList(new String[] { "entity4" }), extract(allEnrollments.findByMetadataProperty("fuu", "boz"), on(Enrollment.class).getExternalId()));
     }
