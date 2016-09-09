@@ -1,6 +1,7 @@
 package org.motechproject.scheduletracking.it;
 
 import ch.lambdaj.Lambda;
+import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.junit.After;
@@ -38,9 +39,7 @@ import java.util.Map;
 
 import static ch.lambdaj.Lambda.on;
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.motechproject.commons.date.util.DateUtil.newDateTime;
 import static org.motechproject.commons.date.util.DateUtil.now;
 import static org.motechproject.commons.date.util.DateUtil.today;
@@ -235,7 +234,8 @@ public class AllEnrollmentsBundleIT extends BasePaxIT {
         DateTime end = newDateTime(today, new Time(0, 0));
         List<Enrollment> filteredEnrollments = allEnrollments.completedDuring(start, end);
         assertNotNull(filteredEnrollments.get(0).getSchedule());
-        assertEquals(asList(new String[] { "entity_2", "entity_3" }), Lambda.extract(filteredEnrollments, on(Enrollment.class).getExternalId()));
+        assertThat(asList(new String[] { "entity_2", "entity_3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(
+                Lambda.extract(filteredEnrollments, on(Enrollment.class).getExternalId())));
     }
 
     private Enrollment createEnrollment(final String externalId, final String scheduleName, final String currentMilestoneName, final DateTime referenceDateTime, final DateTime enrollmentDateTime, final Time preferredAlertTime, final EnrollmentStatus enrollmentStatus, final Map<String,String> metadata) {
