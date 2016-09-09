@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    export MOTECH_CONFIG_DIR=~/.motech/config/
+    export MOTECH_CONFIG_DIR=~/.motech/config
     if [ "$DB" = "mysql" ]; then
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
         mvn clean install -PIT -U
