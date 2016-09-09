@@ -1108,7 +1108,7 @@
                                 <goals>
                                     <goal>clean</goal>
                                 </goals>
-                                <phase>post-integration-test</phase>
+                                <phase>install</phase>
                                 <configuration>
                                     <excludeDefaultDirectories>true</excludeDefaultDirectories>
                                     <filesets>
