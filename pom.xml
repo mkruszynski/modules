@@ -1087,11 +1087,32 @@
                                             <directory>${modules.root.dir}/testdata</directory>
                                             <includes>
                                                 <include>motech-settings.properties</include>
+                                                <include>datanucleus_data.properties</include>
+                                                <include>datanucleus_schema.properties</include>
+                                                <include>flyway_data.properties</include>
+                                                <include>flyway_schema.properties</include>
                                             </includes>
                                         </resource>
                                         <resource>
                                             <directory>${modules.root.dir}/testdata/${motech.sql.dbtype}</directory>
                                             <include>bootstrap.properties</include>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-config-locations-file</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${motech.dir}</outputDirectory>
+                                    <overwrite>true</overwrite>
+                                    <resources>
+                                        <resource>
+                                            <directory>${modules.root.dir}/testdata</directory>
+                                            <include>config-locations.properties</include>
                                         </resource>
                                     </resources>
                                 </configuration>
