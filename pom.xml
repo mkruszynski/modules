@@ -1093,6 +1093,16 @@
                                         </resource>
                                     </resources>
                                 </configuration>
+                                <configuration>
+                                    <outputDirectory>${motech.dir}</outputDirectory>
+                                    <overwrite>true</overwrite>
+                                    <resources>
+                                        <resource>
+                                            <directory>${modules.root.dir}/testdata</directory>
+                                            <include>config-locations.properties</include>
+                                        </resource>
+                                    </resources>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
