@@ -1,7 +1,6 @@
 package org.motechproject.scheduletracking.it;
 
 import ch.lambdaj.Lambda;
-import org.hamcrest.collection.IsIterableContainingInAnyOrder;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.junit.After;
@@ -34,6 +33,7 @@ import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.inject.Inject;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -236,8 +236,10 @@ public class AllEnrollmentsBundleIT extends BasePaxIT {
         DateTime end = newDateTime(today, new Time(0, 0));
         List<Enrollment> filteredEnrollments = allEnrollments.completedDuring(start, end);
         List<String> extractedEnrollments = Lambda.extract(filteredEnrollments, on(Enrollment.class).getExternalId());
+        Collections.sort(extractedEnrollments);
+
         assertNotNull(filteredEnrollments.get(0).getSchedule());
-        assertEquals(extractedEnrollments, IsIterableContainingInAnyOrder.containsInAnyOrder("entity_2", "entity_3"));
+        assertEquals(asList(new String[] { "entity_2", "entity_3" }), extractedEnrollments);
     }
 
     private Enrollment createEnrollment(final String externalId, final String scheduleName, final String currentMilestoneName, final DateTime referenceDateTime, final DateTime enrollmentDateTime, final Time preferredAlertTime, final EnrollmentStatus enrollmentStatus, final Map<String,String> metadata) {
