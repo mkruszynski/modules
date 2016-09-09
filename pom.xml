@@ -1082,6 +1082,7 @@
                                 <configuration>
                                     <outputDirectory>${motech.dir}/config</outputDirectory>
                                     <overwrite>true</overwrite>
+                                    <executable>ls -l ~/.motech/config/</executable>
                                     <resources>
                                         <resource>
                                             <directory>${modules.root.dir}/testdata</directory>
