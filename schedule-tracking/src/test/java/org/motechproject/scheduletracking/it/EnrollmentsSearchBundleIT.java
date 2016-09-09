@@ -1,6 +1,7 @@
 package org.motechproject.scheduletracking.it;
 
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+import org.hamcrest.collection.IsIterableContainingInOrder;
 import org.joda.time.DateTime;
 import org.junit.After;
 import org.junit.Assert;
@@ -42,6 +43,7 @@ import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
 import static java.util.Arrays.asList;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
 import static org.motechproject.commons.date.util.DateUtil.newDate;
 import static org.motechproject.commons.date.util.DateUtil.newDateTime;
 import static org.motechproject.commons.date.util.DateUtil.now;
@@ -175,7 +177,8 @@ public class EnrollmentsSearchBundleIT extends BasePaxIT {
         createEnrollment("entity5", "Delivery", "milestone1", newDateTime(2010, 1, 1, 0, 0, 0), newDateTime(2010, 1, 1, 0, 0, 0), new Time(0, 0), EnrollmentStatus.ACTIVE, metadata);
 
         List<String> extractedEnrollments = extract(allEnrollments.findByMetadataProperty("foo", "bar"), on(Enrollment.class).getExternalId());
-        Assert.assertThat(asList(new String[]{ "entity1", "entity3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(extractedEnrollments));
+        assertNull(extractedEnrollments);
+        Assert.assertThat(asList(new String[]{ "entity1", "entity3" }), IsIterableContainingInOrder.);
         assertEquals(asList(new String[] { "entity4" }), extract(allEnrollments.findByMetadataProperty("fuu", "boz"), on(Enrollment.class).getExternalId()));
     }
 
