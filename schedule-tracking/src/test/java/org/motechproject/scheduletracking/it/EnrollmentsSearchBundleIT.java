@@ -178,7 +178,7 @@ public class EnrollmentsSearchBundleIT extends BasePaxIT {
 
         List<String> extractedEnrollments = extract(allEnrollments.findByMetadataProperty("foo", "bar"), on(Enrollment.class).getExternalId());
         assertNull(extractedEnrollments);
-        Assert.assertThat(asList(new String[]{ "entity1", "entity3" }), IsIterableContainingInOrder.);
+        Assert.assertThat(asList(new String[]{ "entity1", "entity3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(extractedEnrollments));
         assertEquals(asList(new String[] { "entity4" }), extract(allEnrollments.findByMetadataProperty("fuu", "boz"), on(Enrollment.class).getExternalId()));
     }
 
