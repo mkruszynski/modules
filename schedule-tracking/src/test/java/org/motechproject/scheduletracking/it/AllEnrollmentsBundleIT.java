@@ -237,7 +237,7 @@ public class AllEnrollmentsBundleIT extends BasePaxIT {
         List<Enrollment> filteredEnrollments = allEnrollments.completedDuring(start, end);
         List<String> extractedEnrollments = Lambda.extract(filteredEnrollments, on(Enrollment.class).getExternalId());
         assertNotNull(filteredEnrollments.get(0).getSchedule());
-        assertEquals(asList(new String[] { "entity_2", "entity_3" }), IsIterableContainingInAnyOrder.containsInAnyOrder(extractedEnrollments));
+        assertEquals(extractedEnrollments, IsIterableContainingInAnyOrder.containsInAnyOrder("entity_2", "entity_3"));
     }
 
     private Enrollment createEnrollment(final String externalId, final String scheduleName, final String currentMilestoneName, final DateTime referenceDateTime, final DateTime enrollmentDateTime, final Time preferredAlertTime, final EnrollmentStatus enrollmentStatus, final Map<String,String> metadata) {
