@@ -31,10 +31,7 @@ import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.web.context.WebApplicationContext;
 
 import javax.inject.Inject;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static ch.lambdaj.Lambda.extract;
 import static ch.lambdaj.Lambda.on;
@@ -172,7 +169,10 @@ public class EnrollmentsSearchBundleIT extends BasePaxIT {
         metadata.put("fuu", "qux");
         createEnrollment("entity5", "Delivery", "milestone1", newDateTime(2010, 1, 1, 0, 0, 0), newDateTime(2010, 1, 1, 0, 0, 0), new Time(0, 0), EnrollmentStatus.ACTIVE, metadata);
 
-        assertEquals(asList(new String[]{ "entity1", "entity3" }), extract(allEnrollments.findByMetadataProperty("foo", "bar"), on(Enrollment.class).getExternalId()));
+        List<String> extractedEnrollments = extract(allEnrollments.findByMetadataProperty("foo", "bar"), on(Enrollment.class).getExternalId());
+        Collections.sort(extractedEnrollments);
+
+        assertEquals(asList(new String[]{ "entity1", "entity3" }), extractedEnrollments);
         assertEquals(asList(new String[] { "entity4" }), extract(allEnrollments.findByMetadataProperty("fuu", "boz"), on(Enrollment.class).getExternalId()));
     }
 
