@@ -1093,6 +1093,13 @@
                                         </resource>
                                     </resources>
                                 </configuration>
+                            </execution>
+                            <execution>
+                                <id>copy-locations-file</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
                                 <configuration>
                                     <outputDirectory>${motech.dir}</outputDirectory>
                                     <overwrite>true</overwrite>
