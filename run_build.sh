@@ -6,7 +6,7 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
         echo ".motech przed mvn"
         ls -l ~/.motech
         echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
-        mvn clean install -PIT -U
+        mvn clean install -Dmaven.repo.local=~/.motech -PIT -U
         echo ".motech PO"
         ls -l ~/.motech
     elif [ "$DB" = "psql" ]; then
