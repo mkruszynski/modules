@@ -1,7 +1,7 @@
 <servers>
     <server>
-        <id>ossrh</id>
-        <username>${env.SONATYPE_USERNAME}</username>
-        <password>${env.SONATYPE_PASSWORD}</password>
+        <id>motech.nexus</id>
+        <username>deployment</username>
+        <password>0zwgxQELt4tN6oe4hDkc</password>
     </server>
 </servers>
