@@ -13,7 +13,6 @@ elif [ "$TRAVIS_BRANCH" = "master" ] && [ "$DB" = "mysql" ]; then
     #if [ "$?" -ne 0 ]; then
      #   exit 1
     #fi
-    echo $SONATYPE_USERNAME
-    echo $SONATYPE_PASSWORD
+
     mvn clean deploy --settings deploy-settings.xml -Dmaven.test.skip=true -U
 fi
