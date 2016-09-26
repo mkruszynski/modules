@@ -14,5 +14,5 @@ elif [ "$TRAVIS_BRANCH" = "master" ] && [ "$DB" = "mysql" ]; then
      #   exit 1
     #fi
 
-    mvn clean deploy --settings deploy-settings.xml -Dmaven.test.skip=true -U
+    mvn clean deploy --settings ./deploy-settings.xml -Dmaven.test.skip=true -U
 fi

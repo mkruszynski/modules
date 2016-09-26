@@ -1,6 +1,6 @@
 <servers>
     <server>
-        <id>motech-repo</id>
+        <id>motech.nexus</id>
         <username>deployment</username>
         <password>0zwgxQELt4tN6oe4hDkc</password>
     </server>
