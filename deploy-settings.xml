@@ -1,7 +1,9 @@
-<servers>
-    <server>
-        <id>motech.nexus</id>
-        <username>deployment</username>
-        <password>0zwgxQELt4tN6oe4hDkc</password>
-    </server>
-</servers>
+<settings>
+    <servers>
+        <server>
+            <id>motech.nexus</id>
+            <username>deployment</username>
+            <password>0zwgxQELt4tN6oe4hDkc</password>
+        </server>
+    </servers>
+</settings>
