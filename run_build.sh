@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$TRAVIS_EVENT_TYPE" = "cron" ]; then
+if [ "$TRAVIS_EVENT_TYPE" != "cron" ]; then
     docker network create --subnet=192.168.33.0/16 OpenMRS
     mkdir ~/.motech
     cp ./testdata/config-locations.properties ~/.motech/
