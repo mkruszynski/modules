@@ -10,6 +10,7 @@ import org.motechproject.event.listener.EventListenerRegistryService;
 import org.motechproject.openmrs.domain.Concept;
 import org.motechproject.openmrs.domain.ConceptName;
 import org.motechproject.openmrs.exception.ConceptNameAlreadyInUseException;
+import org.motechproject.openmrs.exception.OpenMRSException;
 import org.motechproject.openmrs.service.EventKeys;
 import org.motechproject.openmrs.service.OpenMRSConceptService;
 import org.motechproject.testing.osgi.BasePaxIT;
@@ -28,7 +29,6 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.motechproject.openmrs.util.TestConstants.DEFAULT_CONFIG_NAME;
 
@@ -105,7 +105,7 @@ public class MRSConceptServiceIT extends BasePaxIT {
 
             try {
                 conceptAdapter.getConceptByUuid(DEFAULT_CONFIG_NAME, conceptOne.getUuid());
-            } catch (HttpClientErrorException e) {
+            } catch (OpenMRSException e) {
                 isOpenMRSExceptionThrown = Boolean.TRUE;
             }
 
@@ -203,7 +203,7 @@ public class MRSConceptServiceIT extends BasePaxIT {
 
         try {
             conceptAdapter.getConceptByUuid(DEFAULT_CONFIG_NAME, concept.getUuid());
-        } catch (HttpClientErrorException e) {
+        } catch (OpenMRSException e) {
             isOpenMRSExceptionThrown = Boolean.TRUE;
         }
 
