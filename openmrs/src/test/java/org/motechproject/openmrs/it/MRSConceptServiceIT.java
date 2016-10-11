@@ -18,6 +18,7 @@ import org.ops4j.pax.exam.ExamFactory;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerSuite;
+import org.springframework.web.client.HttpClientErrorException;
 
 import javax.inject.Inject;
 import java.util.Arrays;
@@ -188,9 +189,17 @@ public class MRSConceptServiceIT extends BasePaxIT {
 
     private void deleteConcept(Concept concept) throws InterruptedException {
 
-        conceptAdapter.deleteConcept(DEFAULT_CONFIG_NAME, concept.getUuid());
-        assertNull(conceptAdapter.getConceptByUuid(DEFAULT_CONFIG_NAME, concept.getUuid()));
+        Boolean isOpenMRSExceptionThrown = Boolean.FALSE;
 
+        conceptAdapter.deleteConcept(DEFAULT_CONFIG_NAME, concept.getUuid());
+
+        try {
+            conceptAdapter.getConceptByUuid(DEFAULT_CONFIG_NAME, concept.getUuid());
+        } catch (HttpClientErrorException e) {
+            isOpenMRSExceptionThrown = Boolean.TRUE;
+        }
+
+        assertTrue(isOpenMRSExceptionThrown);
     }
 
     public class MrsListener implements EventListener {
