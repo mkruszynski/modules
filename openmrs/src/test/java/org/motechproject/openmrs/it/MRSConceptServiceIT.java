@@ -97,11 +97,19 @@ public class MRSConceptServiceIT extends BasePaxIT {
 
     @Test
     public void shouldDeleteConcept() throws InterruptedException, ConceptNameAlreadyInUseException {
+        Boolean isOpenMRSExceptionThrown = Boolean.FALSE;
 
         synchronized (lock) {
-            conceptAdapter.deleteConcept(DEFAULT_CONFIG_NAME, conceptOne.getUuid());
-            assertNull(conceptAdapter.getConceptByUuid(DEFAULT_CONFIG_NAME, conceptOne.getUuid()));
 
+            conceptAdapter.deleteConcept(DEFAULT_CONFIG_NAME, conceptOne.getUuid());
+
+            try {
+                conceptAdapter.getConceptByUuid(DEFAULT_CONFIG_NAME, conceptOne.getUuid());
+            } catch (HttpClientErrorException e) {
+                isOpenMRSExceptionThrown = Boolean.TRUE;
+            }
+
+            assertTrue(isOpenMRSExceptionThrown);
             lock.wait(60000);
         }
 
