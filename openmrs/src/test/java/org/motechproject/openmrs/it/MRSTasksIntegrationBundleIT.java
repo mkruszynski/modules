@@ -658,7 +658,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         assertEquals(2, encounterList.size());
 
         for (Encounter encounter : encounterList) {
-            if (Objects.equals(encounter.getUuid(), createdEncounter.getUuid())) {
+            if (!Objects.equals(encounter.getUuid(), createdEncounter.getUuid())) {
                 assertEquals(createdEncounter.getPatient().getUuid(), encounter.getPatient().getUuid());
                 assertEquals(createdEncounter.getEncounterType().getUuid(), encounter.getEncounterType().getUuid());
                 assertEquals(createdEncounter.getEncounterDatetime(), encounter.getEncounterDatetime());
