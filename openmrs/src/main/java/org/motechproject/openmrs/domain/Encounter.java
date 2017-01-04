@@ -14,7 +14,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -243,10 +245,17 @@ public class Encounter {
             final JsonElement jsonProvider = jsonEncounter.get("provider");
             Person provider = (Person) JsonUtils.readJson(jsonProvider.toString(), Person.class);
 
-            Encounter encounter = (Encounter) JsonUtils.readJson(src.toString(), Encounter.class);
+            Encounter encounter = (Encounter) JsonUtils.readJsonWithAdapters(src.toString(), Encounter.class, createValueAdapter());
             encounter.setEncounterProviders(Collections.singletonList(provider));
 
             return encounter;
+        }
+
+        private Map<Type, Object> createValueAdapter() {
+            Map<Type, Object> valueAdapter = new HashMap<>();
+            valueAdapter.put(Observation.ObservationValue.class, new Observation.ObservationValueDeserializer());
+
+            return valueAdapter;
         }
     }
 }
