@@ -712,7 +712,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     }
 
     private void checkEncounterObs(List<Observation> observations) {
-        assertEquals(1L, observations.size());
+        assertEquals(2L, observations.size());
 
         Observation observation = observations.get(0);
 
