@@ -101,8 +101,8 @@ public class EncounterResourceImpl extends BaseResource implements EncounterReso
 
     private Gson buildGsonWithAdaptersDeserialize() {
         return new GsonBuilder()
-                .registerTypeAdapter(Encounter.class, new Encounter.EncounterDeserializer())
-                .registerTypeAdapter(Observation.ObservationValue.class, new Observation.ObservationValueDeserializer())
+                .registerTypeHierarchyAdapter(Encounter.class, new Encounter.EncounterDeserializer())
+                .registerTypeHierarchyAdapter(Observation.ObservationValue.class, new Observation.ObservationValueDeserializer())
                 .create();
     }
 
