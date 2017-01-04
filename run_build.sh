@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 
-if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
-    if [ "$DB" = "psql" ]; then
-        mvn -Dmotech.sql.password=password -Dmotech.sql.user=postgres -Dmaven.test.failure.ignore=false -Dmotech.sql.driver=org.postgresql.Driver -Dmotech.sql.dbtype=psql -Dmotech.sql.url=jdbc:postgresql://localhost:5432/ clean install -PIT -U
-    else
-        mvn clean install -PIT -U
-    fi
-elif [ "$TRAVIS_BRANCH" = "master" ] && [ "$DB" = "mysql" ]; then
-
-    mvn clean install -PIT -U
-
-    if [ "$?" -ne 0 ]; then
-        exit 1
-    fi
-
-    mvn clean deploy --settings deploy-settings.xml -Dmaven.test.skip=true -U
+docker network create --subnet=192.168.33.0/16 OpenMRS
+mkdir ~/.motech
+cp ./testdata/config-locations.properties ~/.motech/
+cd ./openmrs/
+if [ "$OPENMRS_VERSION" = "1.9" ]; then
+    docker pull motech/openmrs
+    docker run -itd --net OpenMRS --ip 192.168.33.9 motech/openmrs
+    mvn clean install -Dopenmrs.host=192.168.33.9:8080 -P OPENMRSIT -U
+elif [ "$OPENMRS_VERSION" = "1.12" ]; then
+    docker pull motech/openmrs:v1.12
+    docker run -itd --net OpenMRS --ip 192.168.33.12 motech/openmrs:v1.12
+    mvn clean install -Dopenmrs.host=192.168.33.12:8080 -Dopenmrs.version=1_12 -P OPENMRSIT -U
 fi

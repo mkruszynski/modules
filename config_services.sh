@@ -8,7 +8,6 @@ sudo ln -s /etc/activemq/instances-available/main /etc/activemq/instances-enable
 sudo sed -e 's/<broker /<broker schedulerSupport="true" /' -i /etc/activemq/instances-enabled/main/activemq.xml
 sudo service activemq restart
 
-#Change root password in mysql
-if [ "$DB" = "mysql" ]; then
-    echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
-fi
+#Install and set mysql root password
+sudo apt-get install -y mysql-server -qq
+echo "USE mysql;\nUPDATE user SET password=PASSWORD('password') WHERE user='root';\nFLUSH PRIVILEGES\n" | mysql -u root
