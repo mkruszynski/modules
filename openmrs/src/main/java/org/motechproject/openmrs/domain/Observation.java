@@ -189,10 +189,8 @@ public class Observation {
         String t = "UUID: " + getUuid() + "\n" +
                 "Concept: " + getConcept().getDisplay() + "\n" +
                 "Value: " + (getValue() != null ? getValue().getDisplay() : "null") + "\n";
-        if (groupMembers != null) {
-            for (Observation obs : groupMembers) {
-                t += obs.toString();
-            }
+        for (Observation obs : getGroupMembers()) {
+            t += obs.toString();
         }
         return t;
     }
