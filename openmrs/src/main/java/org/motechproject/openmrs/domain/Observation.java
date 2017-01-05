@@ -190,7 +190,7 @@ public class Observation {
                 "Concept: " + getConcept().getDisplay() + "\n" +
                 "Value: " + (getValue() != null ? getValue().getDisplay() : "null") + "\n";
         for (Observation obs : getGroupMembers()) {
-            t += obs.toString();
+            t += "obsGroup: " + obs.toString();
         }
         return t;
     }
