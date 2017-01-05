@@ -731,13 +731,12 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
                 assertEquals(2L, childGroupMembers.size());
 
                 for (Observation childObs : childGroupMembers) {
+                    System.out.println(childObs);
                     if (isConceptEquals(obs, "Concept3")) {
                         assertEquals("Yes", childObs.getValue().getDisplay());
                     } else if (isConceptEquals(obs, "Concept4")) {
                         assertEquals("No", childObs.getValue().getDisplay());
-                    } else if (isConceptEquals(obs, "Concept5") || isConceptEquals(obs, "Concept6")) {
-                        fail();
-                    } else {
+                    }  else {
                         fail();
                     }
                 }
