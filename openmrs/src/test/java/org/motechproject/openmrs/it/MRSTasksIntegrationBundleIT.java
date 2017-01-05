@@ -51,6 +51,8 @@ import org.ops4j.pax.exam.ExamFactory;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerSuite;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -80,6 +82,8 @@ import static org.motechproject.openmrs.util.TestConstants.DEFAULT_CONFIG_NAME;
 @ExamReactorStrategy(PerSuite.class)
 @ExamFactory(MotechNativeTestContainerFactory.class)
 public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MRSTasksIntegrationBundleIT.class);
 
     @Inject
     private OpenMRSPatientService patientService;
@@ -715,7 +719,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     private void checkEncounterObs(List<Observation> observations) {
         assertEquals(2L, observations.size());
 
-        System.out.println(observations);
+        LOGGER.error(observations.toString());
 
         Observation observation = observations.get(0);
 
@@ -726,7 +730,6 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         assertEquals(2L, groupMembers.size());
 
         for (Observation obs : groupMembers) {
-            System.out.println(obs);
             if (isConceptEquals(obs, "Concept2")) {
                 assertNull(obs.getValue());
 
@@ -734,7 +737,6 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
                 assertEquals(2L, childGroupMembers.size());
 
                 for (Observation childObs : childGroupMembers) {
-                    System.out.println(childObs);
                     if (isConceptEquals(obs, "Concept3")) {
                         assertEquals("Yes", childObs.getValue().getDisplay());
                     } else if (isConceptEquals(obs, "Concept4")) {
