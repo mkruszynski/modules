@@ -735,6 +735,12 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
                         assertEquals("Yes", childObs.getValue().getDisplay());
                     } else if (isConceptEquals(obs, "Concept4")) {
                         assertEquals("No", childObs.getValue().getDisplay());
+                    } else if (isConceptEquals(obs, "Concept5")) {
+                        assertEquals("2nd", obs.getValue().getDisplay());
+                        assertEquals(0L, obs.getGroupMembers().size());
+                    } else if (isConceptEquals(obs, "Concept6")) {
+                        assertEquals("Maybe", obs.getValue().getDisplay());
+                        assertEquals(0L, obs.getGroupMembers().size());
                     } else {
                         fail();
                     }
