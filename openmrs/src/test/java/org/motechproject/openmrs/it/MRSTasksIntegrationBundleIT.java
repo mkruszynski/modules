@@ -129,7 +129,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     private static final Integer MAX_RETRIES_BEFORE_FAIL = 20;
     private static final Integer WAIT_TIME = 2000;
     private DateTime encounterDateTime = new DateTime("2012-01-16T00:00:00Z");
-    private DateTime latestEncounterDateTime = new DateTime("2017-01-16T00:00:00Z");
+    private DateTime latestEncounterDateTime = new DateTime("2012-01-17T00:00:00Z");
     private DateTime visitStartDateTime = new DateTime("2010-01-10T07:22:05Z");
     private DateTime visitStopDateTime = new DateTime("2014-08-01T07:22:05Z");
 
