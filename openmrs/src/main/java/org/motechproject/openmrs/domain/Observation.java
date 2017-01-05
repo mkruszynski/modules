@@ -186,9 +186,15 @@ public class Observation {
 
     @Override
     public String toString () {
-        return "UUID: " + getUuid() + "\n" +
+        String t = "UUID: " + getUuid() + "\n" +
                 "Concept: " + getConcept().getDisplay() + "\n" +
-                "Value: " + (getValue() != null ? getValue().getDisplay() : "null");
+                "Value: " + (getValue() != null ? getValue().getDisplay() : "null") + "\n";
+        if (groupMembers != null) {
+            for (Observation obs : groupMembers) {
+                t += obs.toString();
+            }
+        }
+        return t;
     }
 
     @Override //NO CHECKSTYLE Cyclomatic Complexity
