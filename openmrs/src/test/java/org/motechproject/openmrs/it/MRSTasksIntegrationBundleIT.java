@@ -720,7 +720,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         isConceptEquals(observation, "Concept1");
 
         List<Observation> groupMembers = observation.getGroupMembers();
-        assertEquals(3L, groupMembers.size());
+        assertEquals(2L, groupMembers.size());
 
         for (Observation obs : groupMembers) {
             if (isConceptEquals(obs, "Concept2")) {
