@@ -51,8 +51,6 @@ import org.ops4j.pax.exam.ExamFactory;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerSuite;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.io.IOException;
@@ -82,8 +80,6 @@ import static org.motechproject.openmrs.util.TestConstants.DEFAULT_CONFIG_NAME;
 @ExamReactorStrategy(PerSuite.class)
 @ExamFactory(MotechNativeTestContainerFactory.class)
 public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MRSTasksIntegrationBundleIT.class);
 
     @Inject
     private OpenMRSPatientService patientService;
@@ -718,8 +714,6 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
 
     private void checkEncounterObs(List<Observation> observations) {
         assertEquals(2L, observations.size());
-
-        LOGGER.error(observations.toString());
 
         Observation observation = observations.get(0);
 
