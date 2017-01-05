@@ -715,6 +715,8 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     private void checkEncounterObs(List<Observation> observations) {
         assertEquals(2L, observations.size());
 
+        System.out.println(observations);
+
         Observation observation = observations.get(0);
 
         assertNull(observation.getValue());
@@ -724,6 +726,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         assertEquals(2L, groupMembers.size());
 
         for (Observation obs : groupMembers) {
+            System.out.println(obs);
             if (isConceptEquals(obs, "Concept2")) {
                 assertNull(obs.getValue());
 
