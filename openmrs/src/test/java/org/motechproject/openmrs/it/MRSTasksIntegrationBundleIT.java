@@ -129,6 +129,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     private static final Integer MAX_RETRIES_BEFORE_FAIL = 20;
     private static final Integer WAIT_TIME = 2000;
     private DateTime encounterDateTime = new DateTime("2012-01-16T00:00:00Z");
+    private DateTime latestEncounterDateTime = new DateTime("2017-01-16T00:00:00Z");
     private DateTime visitStartDateTime = new DateTime("2010-01-10T07:22:05Z");
     private DateTime visitStopDateTime = new DateTime("2014-08-01T07:22:05Z");
 
@@ -412,7 +413,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
                 VERSION, TRIGGER_SUBJECT, TRIGGER_SUBJECT);
 
         ArrayList<TaskActionInformation> taskActions = new ArrayList();
-        taskActions.add(prepareCreateEncounterActionInformation(false));
+        taskActions.add(prepareCreateEncounterActionInformation(false, true));
         taskActions.add(prepareCreatePatientActionInformation("{{pa.0.uuid}}", "Jacob Lee", false));
 
         Task task = new Task("OpenMRSEncounterPostActionParameterTestTask", triggerInformation, taskActions, new TaskConfig(), true, true);
@@ -426,7 +427,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
                 VERSION, TRIGGER_SUBJECT, TRIGGER_SUBJECT);
 
         ArrayList<TaskActionInformation> taskActions = new ArrayList();
-        taskActions.add(prepareCreateEncounterActionInformation(true));
+        taskActions.add(prepareCreateEncounterActionInformation(true, false));
 
         Task task = new Task("OpenMRSEncounterWithObsTestTask", triggerInformation, taskActions, new TaskConfig(), true, true);
         getTaskService().save(task);
@@ -483,7 +484,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         return actionInformation;
     }
 
-    private TaskActionInformation prepareCreateEncounterActionInformation(boolean withObs) throws ConceptNameAlreadyInUseException {
+    private TaskActionInformation prepareCreateEncounterActionInformation(boolean withObs, boolean latestEncounter) throws ConceptNameAlreadyInUseException {
         TaskActionInformation actionInformation = new TaskActionInformation("Create Encounter [" + DEFAULT_CONFIG_NAME + "]", OPENMRS_CHANNEL_NAME,
                 OPENMRS_CHANNEL_NAME, VERSION, TEST_INTERFACE, "createEncounter");
         actionInformation.setSubject(String.format("createEncounter.%s", DEFAULT_CONFIG_NAME));
@@ -492,7 +493,7 @@ public class MRSTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         values.put(Keys.PROVIDER_UUID, createdProvider.getUuid());
         values.put(Keys.PATIENT_UUID, createdPatient.getUuid());
         values.put(Keys.ENCOUNTER_TYPE, createdEncounterType.getUuid());
-        values.put(Keys.ENCOUNTER_DATE, encounterDateTime.toString());
+        values.put(Keys.ENCOUNTER_DATE, latestEncounter ? latestEncounterDateTime.toString() : encounterDateTime.toString());
         values.put(Keys.LOCATION_NAME, DEFAULT_LOCATION_NAME);
         values.put(Keys.CONFIG_NAME, DEFAULT_CONFIG_NAME);
 
