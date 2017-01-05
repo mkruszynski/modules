@@ -188,7 +188,7 @@ public class Observation {
     public String toString () {
         return "UUID: " + getUuid() + "\n" +
                 "Concept: " + getConcept().getDisplay() + "\n" +
-                "Value: " + getValue().getDisplay();
+                "Value: " + (getValue() != null ? getValue().getDisplay() : "null");
     }
 
     @Override //NO CHECKSTYLE Cyclomatic Complexity
