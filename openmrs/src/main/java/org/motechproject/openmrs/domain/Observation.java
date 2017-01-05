@@ -184,6 +184,13 @@ public class Observation {
                 valueModifier, valueCodedName, obsGroup, location, order, comment);
     }
 
+    @Override
+    public String toString () {
+        return "UUID: " + getUuid() + "\n" +
+                "Concept: " + getConcept().getDisplay() + "\n" +
+                "Value: " + getValue().getDisplay();
+    }
+
     @Override //NO CHECKSTYLE Cyclomatic Complexity
     public boolean equals(Object o) {
         if (this == o) {
