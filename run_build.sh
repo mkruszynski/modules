@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+mvn --version
 rm -r ~/.m2/repository/org/motechproject/*
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
     if [ "$DB" = "psql" ]; then
