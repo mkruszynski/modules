@@ -1391,8 +1391,8 @@
     </organization>
 
     <ciManagement>
-        <system>Jenkins</system>
-        <url>http://ci.motechproject.org/</url>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/mkruszynski/modules/</url>
     </ciManagement>
 
     <mailingLists>
