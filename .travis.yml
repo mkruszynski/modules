@@ -24,6 +24,7 @@ script:
 cache:
   directories:
     - $HOME/.m2
+    - $HOME/.motech/bundles
 
 before_cache:
   - rm -r ~/.m2/repository/org/motechproject/*
