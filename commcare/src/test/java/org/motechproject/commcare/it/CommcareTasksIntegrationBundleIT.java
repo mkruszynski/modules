@@ -134,6 +134,8 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         commcareTasksNotifier.updateTasksInfo();
 
         waitForChannel(COMMCARE_CHANNEL_NAME);
+        wait(5000);
+        
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
 
         verifyCommcareChannelHasCorrectActionsAndTriggers(channel);
