@@ -57,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.concurrent.TimeUnit;
 
 import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
 import static org.junit.Assert.assertEquals;
@@ -134,8 +135,8 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         commcareTasksNotifier.updateTasksInfo();
 
         waitForChannel(COMMCARE_CHANNEL_NAME);
-        wait(5000);
-        
+        TimeUnit.SECONDS.sleep(3);
+
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
 
         verifyCommcareChannelHasCorrectActionsAndTriggers(channel);
