@@ -42,8 +42,6 @@ public final class DummyCommcareSchema {
 
     public static final String APP_ID1 = "cef11d974db0f4b69b465df85ef8c826";
     public static final String APP_ID2 = "053c85550dc563a682ff610dab71f8d5";
-    public static final String APP_ID3 = "5de0440e980379b625c777ebbd996fbe";
-
 
     public static final String REPORT_ID1 = "9aab0eeb88555a7b3bc8676883e7379a";
     public static final String REPORT_ID2 = "9aab0eeb88555a7b4568676883e7379a";
