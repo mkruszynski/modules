@@ -57,7 +57,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.concurrent.TimeUnit;
 
 import static org.apache.commons.lang.StringUtils.equalsIgnoreCase;
 import static org.junit.Assert.assertEquals;
@@ -135,7 +134,6 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         commcareTasksNotifier.updateTasksInfo();
 
         waitForChannel(COMMCARE_CHANNEL_NAME);
-        TimeUnit.SECONDS.sleep(10);
 
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
 
@@ -319,16 +317,19 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     private void createMockCommcareSchema() {
         CommcareApplicationJson applicationJson1 = DummyCommcareSchema.getApplicationsForConfigOne().get(0);
         applicationJson1.setApplicationName("TestApp1");
+        applicationJson1.setCommcareAppId(DummyCommcareSchema.APP_ID1);
         applicationJson1.setResourceUri("none");
         applicationJson1.setConfigName(config.getName());
 
         CommcareApplicationJson applicationJson2 = DummyCommcareSchema.getApplicationsForConfigOne().get(1);
         applicationJson2.setApplicationName("TestApp2");
+        applicationJson2.setCommcareAppId(DummyCommcareSchema.APP_ID2);
         applicationJson2.setResourceUri("none");
         applicationJson2.setConfigName(config.getName());
 
         CommcareApplicationJson applicationJson3 = DummyCommcareSchema.getApplicationsForConfigOne().get(2);
         applicationJson3.setApplicationName("TestApp3");
+        applicationJson3.setCommcareAppId(DummyCommcareSchema.APP_ID3);
         applicationJson3.setResourceUri("none");
         applicationJson3.setConfigName(config.getName());
 
