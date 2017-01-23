@@ -46,6 +46,8 @@ import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerSuite;
 import org.osgi.framework.BundleContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.xml.bind.DatatypeConverter;
@@ -67,6 +69,8 @@ import static org.junit.Assert.fail;
 @ExamReactorStrategy(PerSuite.class)
 @ExamFactory(MotechNativeTestContainerFactory.class)
 public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CommcareTasksIntegrationBundleIT.class);
 
     private static final int PORT = TestContext.getJettyPort();
 
@@ -208,6 +212,8 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         TaskTriggerInformation expectedCaseDeath = new TaskTriggerInformation();
         TaskTriggerInformation expectedCaseCheckup = new TaskTriggerInformation();
         TaskTriggerInformation expectedStockTx = new TaskTriggerInformation();
+        
+        LOGGER.error("Błąd w channelu? {}", channel);
 
         expectedForm1.setSubject("org.motechproject.commcare.api.forms." + config.getName() + "." + DummyCommcareSchema.XMLNS1 + DummyCommcareSchema.APP_ID1);
         assertTrue(containsTrigger(channel, expectedForm1));
