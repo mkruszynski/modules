@@ -134,10 +134,10 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         configurationResponse = updateConfiguration(config, config.getName());
         assertEquals(HttpStatus.SC_OK, configurationResponse.getStatusLine().getStatusCode());
 
+        waitForChannel(COMMCARE_CHANNEL_NAME);
+
         createMockCommcareSchema();
         commcareTasksNotifier.updateTasksInfo();
-
-        waitForChannel(COMMCARE_CHANNEL_NAME);
 
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
 
@@ -199,8 +199,6 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         List<TriggerEvent> triggerEvents = channel.getTriggerTaskEvents();
         List<ActionEvent> actionEvents = channel.getActionTaskEvents();
 
-        LOGGER.error("Akcjon iwents? {}", channel);
-
         assertEquals(9, actionEvents.size());
         assertEquals(13, triggerEvents.size());
 
@@ -214,8 +212,6 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         TaskTriggerInformation expectedCaseDeath = new TaskTriggerInformation();
         TaskTriggerInformation expectedCaseCheckup = new TaskTriggerInformation();
         TaskTriggerInformation expectedStockTx = new TaskTriggerInformation();
-
-        LOGGER.error("Błąd w channelu? {}", channel);
 
         expectedForm1.setSubject("org.motechproject.commcare.api.forms." + config.getName() + "." + DummyCommcareSchema.XMLNS1 + DummyCommcareSchema.APP_ID1);
         assertTrue(containsTrigger(channel, expectedForm1));
