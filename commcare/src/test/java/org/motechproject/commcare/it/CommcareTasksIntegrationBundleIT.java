@@ -136,11 +136,11 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         waitForChannel(COMMCARE_CHANNEL_NAME);
 
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
-        
-        createDummyActionChannel(channel);
-        createTestTask();
 
         verifyCommcareChannelHasCorrectActionsAndTriggers(channel);
+
+        createDummyActionChannel(channel);
+        createTestTask();
 
         HttpResponse response = sendMockForm();
 
