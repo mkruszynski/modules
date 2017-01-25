@@ -131,7 +131,7 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
 
         createMockCommcareSchema();
         commcareTasksNotifier.updateTasksInfo();
-        
+
         HttpResponse configurationResponse = createConfiguration(config);
         assertEquals(HttpStatus.SC_OK, configurationResponse.getStatusLine().getStatusCode());
 
