@@ -128,6 +128,10 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     public void testCommcareTasksIntegration() throws InterruptedException, IOException {
 
         config = ConfigsUtils.prepareConfigOne();
+
+        createMockCommcareSchema();
+        commcareTasksNotifier.updateTasksInfo();
+        
         HttpResponse configurationResponse = createConfiguration(config);
         assertEquals(HttpStatus.SC_OK, configurationResponse.getStatusLine().getStatusCode());
 
@@ -135,9 +139,6 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
         assertEquals(HttpStatus.SC_OK, configurationResponse.getStatusLine().getStatusCode());
 
         waitForChannel(COMMCARE_CHANNEL_NAME);
-
-        createMockCommcareSchema();
-        commcareTasksNotifier.updateTasksInfo();
 
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
 
