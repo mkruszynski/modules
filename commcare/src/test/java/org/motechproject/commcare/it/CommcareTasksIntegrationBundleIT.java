@@ -46,8 +46,6 @@ import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerSuite;
 import org.osgi.framework.BundleContext;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import javax.xml.bind.DatatypeConverter;
@@ -69,8 +67,6 @@ import static org.junit.Assert.fail;
 @ExamReactorStrategy(PerSuite.class)
 @ExamFactory(MotechNativeTestContainerFactory.class)
 public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(CommcareTasksIntegrationBundleIT.class);
 
     private static final int PORT = TestContext.getJettyPort();
 
@@ -128,23 +124,23 @@ public class CommcareTasksIntegrationBundleIT extends AbstractTaskBundleIT {
     public void testCommcareTasksIntegration() throws InterruptedException, IOException {
 
         config = ConfigsUtils.prepareConfigOne();
-
-        createMockCommcareSchema();
-        commcareTasksNotifier.updateTasksInfo();
-
         HttpResponse configurationResponse = createConfiguration(config);
         assertEquals(HttpStatus.SC_OK, configurationResponse.getStatusLine().getStatusCode());
 
         configurationResponse = updateConfiguration(config, config.getName());
         assertEquals(HttpStatus.SC_OK, configurationResponse.getStatusLine().getStatusCode());
 
+        createMockCommcareSchema();
+        commcareTasksNotifier.updateTasksInfo();
+
         waitForChannel(COMMCARE_CHANNEL_NAME);
 
         Channel channel = findChannel(COMMCARE_CHANNEL_NAME);
-
-        verifyCommcareChannelHasCorrectActionsAndTriggers(channel);
+        
         createDummyActionChannel(channel);
         createTestTask();
+
+        verifyCommcareChannelHasCorrectActionsAndTriggers(channel);
 
         HttpResponse response = sendMockForm();
 
