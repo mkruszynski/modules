@@ -71,7 +71,7 @@ public class FormControllerIT extends OdkBaseIT {
         int count = 0;
         while (mockEventListener.getEvents().size() < EXPECTED_EVENTS_SUCCESS && count < WAIT_COUNT) {
             count++;
-            getLogger().debug("Number of events: " + mockEventListener.getEvents().size());
+            getLogger().error("Number of events: " + mockEventListener.getEvents().size());
 
             if (count == WAIT_COUNT) {
                 fail(TIMEOUT);
