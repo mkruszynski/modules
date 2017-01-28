@@ -101,9 +101,14 @@ public final class EventHelper {
         } else {
             encounterParameters.put(EventKeys.LOCATION_ID, null);
         }
+        if (encounter.getVisit() != null) {
+            encounterParameters.put(EventKeys.VISIT_ID, encounter.getVisit().getUuid());
+        }
+        if (encounter.getForm() != null) {
+            encounterParameters.put(EventKeys.FORM_ID, encounter.getForm().getUuid());
+        }
         encounterParameters.put(EventKeys.ENCOUNTER_DATE, encounter.getEncounterDatetime());
         encounterParameters.put(EventKeys.ENCOUNTER_TYPE, encounter.getEncounterType().getUuid());
-        encounterParameters.put(EventKeys.VISIT_ID, encounter.getVisit().getUuid());
         return encounterParameters;
     }
 
@@ -166,7 +171,10 @@ public final class EventHelper {
             observationParameters.put(EventKeys.OBSERVATION_CONCEPT_NAME, obs.getConcept().getName().getName());
         }
         observationParameters.put(EventKeys.PATIENT_ID, obs.getPerson().getUuid());
-        observationParameters.put(EventKeys.OBSERVATION_VALUE, obs.getValue().getDisplay());
+        if (obs.getValue() != null) {
+            observationParameters.put(EventKeys.OBSERVATION_VALUE, obs.getValue().getDisplay());
+        }
+
         return observationParameters;
     }
 

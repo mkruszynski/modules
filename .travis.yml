@@ -1,4 +1,5 @@
 language: java
+dist: trusty
 jdk:
   - oraclejdk8
 
@@ -20,13 +21,11 @@ script:
   - sudo chmod +x ./run_build.sh
   - ./run_build.sh
 
+before_cache:
+  - rm -r ~/.m2/repository/org/motechproject/*
+
 cache:
   directories:
     - $HOME/.m2
+    - $HOME/.motech/bundles
 
-notifications:
-  email:
-    recipients:
-      - travis-test-maniek@googlegroups.com
-    on_success: never
-    on_failure: always

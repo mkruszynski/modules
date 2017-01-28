@@ -754,6 +754,11 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty</artifactId>
+                <version>6.1.24</version>
+            </dependency>
+            <dependency>
                 <groupId>org.motechproject</groupId>
                 <artifactId>motech-pax-it</artifactId>
                 <version>${motech.version}</version>
@@ -1271,6 +1276,7 @@
                                     <rules>
                                         <requireBackwardCompatibility implementation="org.semver.enforcer.RequireBackwardCompatibility">
                                             <compatibilityType>BACKWARD_COMPATIBLE_IMPLEMENTER</compatibilityType>
+                                            <dumpDetails>true</dumpDetails>
                                         </requireBackwardCompatibility>
                                         <requireSemanticVersioningConformance implementation="org.semver.enforcer.RequireSemanticVersioningConformance" />
                                     </rules>
@@ -1390,8 +1396,8 @@
     </organization>
 
     <ciManagement>
-        <system>Jenkins</system>
-        <url>http://ci.motechproject.org/</url>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/mkruszynski/modules/</url>
     </ciManagement>
 
     <mailingLists>

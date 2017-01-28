@@ -142,12 +142,37 @@ public class CommCareAPIHttpClient {
     /**
      * Executes a HTTP get request to the form list API endpoint.
      *
-     * @param accountConfig the account configuration to use
-     * @param formListRequest the request that will be used for creating the HTTP request
+     * @param accountConfig  the account configuration to use
+     * @param formListRequest  the request that will be used for creating the HTTP request
      * @return the response as a String (JSON expected)
      */
     public String formListRequest(AccountConfig accountConfig, FormListRequest formListRequest) {
         return this.getRequest(accountConfig, commcareFormListUrl(accountConfig, formListRequest), null);
+    }
+
+    /**
+     * Executes a HTTP get request to the report data API endpoint.
+     *
+     * @param accountConfig  the account configuration to use
+     * @param reportId  the ID of the report
+     * @return the response as a String (JSON expected)
+     */
+    public String singleReportDataRequest(AccountConfig accountConfig, String reportId){
+        return this.getRequest(accountConfig, commcareReportDataUrl(accountConfig, reportId), null);
+    }
+
+    public String singleReportDataRequestWithFilters(AccountConfig accountConfig, String reportId, String filters) {
+        return this.getRequest(accountConfig, commcareReportDataUrlWithFilters(accountConfig, reportId, filters), null);
+    }
+
+    /**
+      * Executes a HTTP get request to the reports list API endpoint.
+      *
+      * @param accountConfig  the account configuration to use
+      * @return the response as a String (JSON expected)
+      */
+    public String reportsListMetadataRequest(AccountConfig accountConfig) {
+        return this.getRequest(accountConfig, commcareReportsMetadataUrl(accountConfig), null);
     }
 
     /**
@@ -159,7 +184,7 @@ public class CommCareAPIHttpClient {
      * @return the JSON string representation of the cases
      */
     public String casesRequest(AccountConfig accountConfig, CaseRequest caseRequest) {
-        return this.getRequest(accountConfig, commcareCasesUrl(accountConfig), caseRequest);
+        return this.getRequest(accountConfig, commcareCasesUrl(accountConfig, caseRequest), caseRequest);
     }
 
     /**
@@ -348,7 +373,7 @@ public class CommCareAPIHttpClient {
         HttpMethod requestMethod = new GetMethod(url);
 
         authenticate(accountConfig);
-        if (request != null) {
+        if (request != null && requestMethod.getQueryString() == null) {
             requestMethod.setQueryString(request.toQueryString());
         }
 
@@ -510,6 +535,21 @@ public class CommCareAPIHttpClient {
                 buildPaginationParams(pageSize, pageNumber));
     }
 
+    String commcareCasesUrl(AccountConfig accountConfig, CaseRequest caseRequest) {
+        try {
+            URIBuilder uriBuilder = new URIBuilder(String.format("%s/%s/api/v%s/case/", getCommcareBaseUrl(accountConfig.getBaseUrl()),
+                    accountConfig.getDomain(), API_VERSION));
+
+            if (caseRequest != null) {
+                caseRequest.addQueryParams(uriBuilder);
+            }
+
+            return uriBuilder.build().toString();
+        } catch (URISyntaxException e) {
+            throw new IllegalArgumentException("Unable to build form list url", e);
+        }
+    }
+
     String commcareCasesUrl(AccountConfig accountConfig) {
         return String.format("%s/%s/api/v%s/case/", getCommcareBaseUrl(accountConfig.getBaseUrl()),
                 accountConfig.getDomain(), API_VERSION);
@@ -522,6 +562,20 @@ public class CommCareAPIHttpClient {
     String commcareCaseUrl(AccountConfig accountConfig, String caseId) {
         return String.format("%s/%s/api/v%s/case/%s/", getCommcareBaseUrl(accountConfig.getBaseUrl()),
                 accountConfig.getDomain(), API_VERSION, caseId);
+    }
+
+    String commcareReportDataUrl(AccountConfig accountConfig, String reportId) {
+        return String.format("%s/%s/api/v%s/configurablereportdata/%s/?format=json",
+                getCommcareBaseUrl(accountConfig.getBaseUrl()), accountConfig.getDomain(), API_VERSION, reportId);
+    }
+
+    String commcareReportDataUrlWithFilters(AccountConfig accountConfig, String reportId, String filter) {
+        return commcareReportDataUrl(accountConfig, reportId).concat(filter);
+    }
+
+    String commcareReportsMetadataUrl(AccountConfig accountConfig) {
+        return String.format("%s/%s/api/v%s/simplereportconfiguration/?format=json", getCommcareBaseUrl(accountConfig.getBaseUrl()),
+                        accountConfig.getDomain(), API_VERSION);
     }
 
     String commcareStockTransactionsUrl(AccountConfig accountConfig) {

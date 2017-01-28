@@ -60,6 +60,10 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpcore-osgi</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -96,6 +100,7 @@
                             org.motechproject.dhis2.rest.domain;version=${project.version},
                             org.motechproject.dhis2.rest.service;version=${project.version},
                             org.motechproject.dhis2.tasks;version=${project.version},
+                            org.motechproject.dhis2.tasks.builder;version=${project.version},
                             org.motechproject.dhis2.web;version=${project.version},
                         </Export-Package>
                     </instructions>
@@ -126,4 +131,34 @@
             </plugin>
         </plugins>
     </build>
+    <profiles>
+            <profile>
+                <id>IT</id>
+                <build>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <id>integration-test</id>
+                                    <goals>
+                                        <goal>integration-test</goal>
+                                    </goals>
+                                    <configuration>
+                                        <includes>
+                                            <include>**/dhis2/**/*IntegrationTests.java</include>
+                                        </includes>
+                                        <excludes>
+                                            <exclude>**/dhis2/**/*IT.java</exclude>
+                                        </excludes>
+                                        <encoding>UTF-8</encoding>
+                                    </configuration>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </build>
+            </profile>
+    </profiles>
 </project>

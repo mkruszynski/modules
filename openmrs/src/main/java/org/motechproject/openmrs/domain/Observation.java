@@ -1,13 +1,17 @@
 package org.motechproject.openmrs.domain;
 
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -17,6 +21,7 @@ import java.util.Objects;
  * a moment in time.
  */
 public class Observation {
+    private static final String DISPLAY_KEY = "display";
 
     private String uuid;
     private String display;
@@ -25,7 +30,17 @@ public class Observation {
     private ObservationValue value;
     private Date obsDatetime;
     private Person person;
-    private List<Observation> groupsMembers;
+    private List<Observation> groupMembers;
+    private Boolean voided;
+    private String valueModifier;
+    private String valueCodedName;
+    private Observation obsGroup;
+    private Location location;
+    private Order order;
+    private String comment;
+
+    //Field used in Tasks filter
+    private String numberOfObservations;
 
     public String getUuid() {
         return uuid;
@@ -87,20 +102,89 @@ public class Observation {
         this.person = person;
     }
 
-    public List<Observation> getGroupsMembers() {
-        return groupsMembers;
+    public List<Observation> getGroupMembers() {
+        if (groupMembers == null) {
+            groupMembers = new ArrayList<>();
+        }
+
+        return groupMembers;
     }
 
-    public void setGroupsMembers(List<Observation> groupsMembers) {
-        this.groupsMembers = groupsMembers;
+    public void setGroupMembers(List<Observation> groupMembers) {
+        this.groupMembers = groupMembers;
+    }
+
+    public Boolean getVoided () {
+        return voided;
+    }
+
+    public void setVoided (Boolean voided) {
+        this.voided = voided;
+    }
+
+    public String getValueModifier () {
+        return valueModifier;
+    }
+
+    public void setValueModifier (String valueModifier) {
+        this.valueModifier = valueModifier;
+    }
+
+    public String getValueCodedName () {
+        return valueCodedName;
+    }
+
+    public void setValueCodedName (String valueCodedName) {
+        this.valueCodedName = valueCodedName;
+    }
+
+    public Observation getObsGroup() {
+        return obsGroup;
+    }
+
+    public void setObsGroup(Observation obsGroup) {
+        this.obsGroup = obsGroup;
+    }
+
+    public Location getLocation () {
+        return location;
+    }
+
+    public void setLocation (Location location) {
+        this.location = location;
+    }
+
+    public Order getOrder () {
+        return order;
+    }
+
+    public void setOrder (Order order) {
+        this.order = order;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getNumberOfObservations () {
+        return numberOfObservations;
+    }
+
+    public void setNumberOfObservations (String numberOfObservations) {
+        this.numberOfObservations = numberOfObservations;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, display, concept, encounter, value, obsDatetime, person, groupsMembers);
+        return Objects.hash(uuid, display, concept, encounter, value, obsDatetime, person, groupMembers, voided,
+                valueModifier, valueCodedName, obsGroup, location, order, comment);
     }
 
-    @Override
+    @Override //NO CHECKSTYLE Cyclomatic Complexity
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -115,7 +199,11 @@ public class Observation {
         return Objects.equals(uuid, other.uuid) && Objects.equals(display, other.display)
                 && Objects.equals(concept, other.concept) && Objects.equals(encounter, other.encounter)
                 && Objects.equals(value, other.value) && Objects.equals(obsDatetime, other.obsDatetime)
-                && Objects.equals(person, other.person) && Objects.equals(groupsMembers, other.groupsMembers);
+                && Objects.equals(person, other.person) && Objects.equals(groupMembers, other.groupMembers)
+                && Objects.equals(voided, other.voided) && Objects.equals(valueModifier, other.valueModifier)
+                && Objects.equals(valueCodedName, other.valueCodedName) && Objects.equals(obsGroup, other.obsGroup)
+                && Objects.equals(location, other.location) && Objects.equals(order, other.order)
+                && Objects.equals(comment, other.comment);
     }
 
     /**
@@ -137,6 +225,10 @@ public class Observation {
             }
             if (observation.obsDatetime != null) {
                 object.addProperty("obsDatetime", sdf.format(observation.obsDatetime));
+            }
+            if (observation.groupMembers != null) {
+                final JsonElement jsonObs = context.serialize(observation.groupMembers);
+                object.add("groupMembers", jsonObs);
             }
 
             return object;
@@ -187,9 +279,31 @@ public class Observation {
      * {@link Observation.ObservationValue} class.
      */
     public static class ObservationValueSerializer implements JsonSerializer<ObservationValue> {
+
         @Override
         public JsonElement serialize(ObservationValue src, Type typeOfSrc, JsonSerializationContext context) {
             return new JsonPrimitive(src.getDisplay());
+        }
+    }
+
+    /**
+    * Implementation of the {@link JsonDeserializer} interface for the
+    * {@link Observation.ObservationValue} class.
+    */
+    public static class ObservationValueDeserializer implements JsonDeserializer<ObservationValue> {
+        @Override
+        public ObservationValue deserialize (JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+            ObservationValue observationValue = new ObservationValue(null);
+
+            if (json.isJsonObject()) {
+                JsonObject jsonObject = json.getAsJsonObject();
+                observationValue.setDisplay(jsonObject.get(DISPLAY_KEY).getAsString());
+            } else if (json.isJsonPrimitive()) {
+                JsonPrimitive jsonPrimitive = json.getAsJsonPrimitive();
+                observationValue.setDisplay(jsonPrimitive.getAsString());
+            }
+
+            return observationValue;
         }
     }
 }

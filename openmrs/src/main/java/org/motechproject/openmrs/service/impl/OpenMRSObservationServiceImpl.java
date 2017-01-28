@@ -1,17 +1,17 @@
 package org.motechproject.openmrs.service.impl;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.Validate;
 import org.apache.log4j.Logger;
 import org.motechproject.event.MotechEvent;
 import org.motechproject.event.listener.EventRelay;
 import org.motechproject.openmrs.config.Config;
-import org.motechproject.openmrs.domain.Concept;
 import org.motechproject.openmrs.domain.Observation;
 import org.motechproject.openmrs.domain.ObservationListResult;
 import org.motechproject.openmrs.domain.Patient;
 import org.motechproject.openmrs.exception.ObservationNotFoundException;
+import org.motechproject.openmrs.exception.OpenMRSException;
 import org.motechproject.openmrs.helper.EventHelper;
-import org.motechproject.openmrs.resource.ConceptResource;
 import org.motechproject.openmrs.resource.ObservationResource;
 import org.motechproject.openmrs.service.EventKeys;
 import org.motechproject.openmrs.service.OpenMRSConfigService;
@@ -35,17 +35,14 @@ public class OpenMRSObservationServiceImpl implements OpenMRSObservationService 
     private final OpenMRSConfigService configService;
 
     private final ObservationResource obsResource;
-    private final ConceptResource conceptResource;
 
     private final EventRelay eventRelay;
 
     @Autowired
     public OpenMRSObservationServiceImpl(ObservationResource obsResource, OpenMRSPatientService patientAdapter,
-                                         ConceptResource conceptResource, EventRelay eventRelay,
-                                         OpenMRSConfigService configService) {
+                                         EventRelay eventRelay, OpenMRSConfigService configService) {
         this.obsResource = obsResource;
         this.patientService = patientAdapter;
-        this.conceptResource = conceptResource;
         this.eventRelay = eventRelay;
         this.configService = configService;
     }
@@ -96,31 +93,59 @@ public class OpenMRSObservationServiceImpl implements OpenMRSObservationService 
     }
 
     @Override
-    public Observation createObservation(String configName, Observation observation) {
-        Validate.notEmpty(observation.getPerson().getUuid(), "Patient uuid cannot be empty");
-        Validate.notNull(observation.getConcept().getName(), "Concept name cannot be empty");
-        Validate.notNull(observation.getObsDatetime());
-        Validate.notNull(observation.getValue());
-        Validate.notEmpty(observation.getValue().getDisplay());
+    public Observation getLatestObservationByPatientUUIDAndConceptUUID(String configName, String patientUUID, String conceptUUID) {
+        Validate.notEmpty(patientUUID, "Patient uuid cannot be empty");
+        Validate.notEmpty(conceptUUID, "Concept uuid cannot be empty");
 
         try {
             Config config = configService.getConfigByName(configName);
-            Concept concept = conceptResource.getConceptByName(config, observation.getConcept().getName().getName());
-            Patient patient = patientService.getPatientByUuid(configName, observation.getPerson().getUuid());
+            ObservationListResult obs = obsResource.getObservationByPatientUUIDAndConceptUUID(config, patientUUID, conceptUUID);
+            return CollectionUtils.isEmpty(obs.getResults()) ? null : obs.getResults().get(0);
+        } catch (HttpClientErrorException e) {
+            throw new OpenMRSException(String.format("Could not get Observation for Patient uuid: %s and Concept: %s. %s %s",
+                    patientUUID, conceptUUID, e.getMessage(), e.getResponseBodyAsString()), e);
+        }
+    }
 
-            Validate.notNull(concept);
-            Validate.notNull(patient);
+    @Override
+    public Observation getLatestObservationByValueAndPatientUuid(String configName, String patientUuid, String value) {
+        try {
+            Config config = configService.getConfigByName(configName);
+            ObservationListResult obs = obsResource.queryForObservationsByPatientId(config, patientUuid);
+            return getLatestObservationByValue(obs.getResults(), new Observation.ObservationValue(value));
+        } catch (HttpClientErrorException e) {
+            throw new OpenMRSException(String.format("Could not get Observation for Patient uuid: %s. %s %s",
+                    patientUuid, e.getMessage(), e.getResponseBodyAsString()), e);
+        }
+    }
 
-            observation.setConcept(concept);
-            observation.setPerson(patient.getPerson());
+    @Override
+    public Observation createObservation(String configName, Observation observation) {
+        Validate.notEmpty(observation.getPerson().getUuid(), "Patient uuid cannot be empty");
+        Validate.notEmpty(observation.getConcept().getUuid(), "Concept uuid cannot be empty");
+        Validate.notNull(observation.getObsDatetime());
+
+        try {
+            Config config = configService.getConfigByName(configName);
 
             Observation created = obsResource.createObservation(config, observation);
             eventRelay.sendEventMessage(new MotechEvent(EventKeys.CREATED_NEW_OBSERVATION_SUBJECT, EventHelper.observationParameters(created)));
             return created;
-
         } catch (HttpClientErrorException e) {
-            LOGGER.error("Error while creating observation!");
-            return null;
+            throw new OpenMRSException("Error while creating observation. Response body: " + e.getResponseBodyAsString(), e);
+        }
+    }
+
+    @Override
+    public Observation createObservationFromJson(String configName, String observationJson) {
+        try {
+            Config config = configService.getConfigByName(configName);
+
+            Observation created = obsResource.createObservationFromJson(config, observationJson);
+            eventRelay.sendEventMessage(new MotechEvent(EventKeys.CREATED_NEW_OBSERVATION_SUBJECT, EventHelper.observationParameters(created)));
+            return created;
+        } catch (HttpClientErrorException e) {
+            throw new OpenMRSException("Error while creating observation. Response body: " + e.getResponseBodyAsString(), e);
         }
     }
 
@@ -160,5 +185,18 @@ public class OpenMRSObservationServiceImpl implements OpenMRSObservationService 
         }
 
         return obs;
+    }
+
+    private Observation getLatestObservationByValue(List<Observation> obs, Observation.ObservationValue value) {
+        Observation result = null;
+
+        for (Observation observation : obs) {
+            if (value.equals(observation.getValue())) {
+                result = observation;
+                break;
+            }
+        }
+
+        return result;
     }
 }

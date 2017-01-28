@@ -4,6 +4,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import org.motechproject.openmrs.util.JsonUtils;
@@ -31,6 +32,7 @@ public class Encounter {
     private Visit visit;
     private List<Observation> obs;
     private List<Person> encounterProviders;
+    private Form form;
 
     /**
      * Default constructor.
@@ -50,6 +52,11 @@ public class Encounter {
 
     public Encounter(Location location, EncounterType encounterType, Date encounterDatetime, Patient patient,
                      Visit visit, List<Person> encounterProviders, List<Observation> obs) {
+        this(location, encounterType, encounterDatetime, patient, visit, encounterProviders, obs, null);
+    }
+
+    public Encounter(Location location, EncounterType encounterType, Date encounterDatetime, Patient patient,
+                     Visit visit, List<Person> encounterProviders, List<Observation> obs, Form form) {
         this.location = location;
         this.encounterType = encounterType;
         this.encounterDatetime = encounterDatetime;
@@ -57,6 +64,7 @@ public class Encounter {
         this.visit = visit;
         this.encounterProviders = encounterProviders;
         this.obs = obs;
+        this.form = form;
     }
 
     public String getUuid() {
@@ -127,13 +135,17 @@ public class Encounter {
         return obs;
     }
 
+    public Form getForm() { return form; }
+
+    public void setForm(Form form) { this.form  = form; }
+
     public void setObs(List<Observation> obs) {
         this.obs = obs;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, display, location, encounterType, encounterDatetime, patient, visit, obs, encounterProviders);
+        return Objects.hash(uuid, display, location, encounterType, encounterDatetime, patient, visit, obs, encounterProviders, form);
     }
 
     @Override //NO CHECKSTYLE Cyclomatic Complexity
@@ -153,7 +165,8 @@ public class Encounter {
                 Objects.equals(patient, encounter.patient) &&
                 Objects.equals(visit, encounter.visit) &&
                 Objects.equals(obs, encounter.obs) &&
-                Objects.equals(encounterProviders, encounter.encounterProviders);
+                Objects.equals(encounterProviders, encounter.encounterProviders) &&
+                Objects.equals(form, encounter.form);
     }
 
     /**
@@ -161,7 +174,7 @@ public class Encounter {
      */
     public static class EncounterSerializer implements JsonSerializer<Encounter> {
 
-        @Override
+        @Override //NO CHECKSTYLE Cyclomatic Complexity
         public JsonElement serialize(Encounter src, Type typeOfSrc, JsonSerializationContext context) {
             JsonObject encounter = new JsonObject();
 
@@ -176,7 +189,7 @@ public class Encounter {
                 encounter.addProperty("location", src.getLocation().getUuid());
             }
             if (src.encounterType != null) {
-                encounter.addProperty("encounterType", src.getEncounterType().getName());
+                encounter.addProperty("encounterType", src.getEncounterType().getUuid());
             }
             if (src.encounterDatetime != null) {
                 encounter.addProperty("encounterDatetime", sdf.format(src.getEncounterDatetime()));
@@ -190,11 +203,26 @@ public class Encounter {
             if (src.visit != null) {
                 encounter.addProperty("visit", src.getVisit().getUuid());
             }
+            if (src.form != null) {
+                encounter.addProperty("form", src.getForm().getUuid());
+            }
             if (src.obs != null) {
                 final JsonElement jsonObs = context.serialize(src.getObs());
                 encounter.add("obs", jsonObs);
             }
             return encounter;
+        }
+    }
+
+    /**
+     * Implementation of the {@link JsonSerializer} interface for the {@link Encounter} class. It represents the encounter
+     * as its ID.
+     */
+    public static class EncounterUuidSerializer implements JsonSerializer<Encounter> {
+
+        @Override
+        public JsonElement serialize(Encounter encounter, Type type, JsonSerializationContext jsonSerializationContext) {
+            return new JsonPrimitive(encounter.getUuid());
         }
     }
 
